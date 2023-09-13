@@ -39,8 +39,6 @@ elif "palm" in args.model:
   df['label'] = df['palm2_response'].apply(response_classification)
 elif "llama" in args.model:
   df['label'] = df['llama2_response'].apply(response_classification)
-elif "vicuna" in args.model:
-  df['label'] = df['vicuna_response'].apply(response_classification)
 
 df = df[df["label"] >=0].reset_index(drop=True)
 print(df)
