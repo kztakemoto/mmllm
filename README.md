@@ -6,7 +6,7 @@ This repository contains data and code used in [*the moral machine experiment on
 
 MIT licensed. Happy if you cite our papers when utilizing the codes:
 
-Takemoto K (2024) The Moral Machine Experiment on Large Language Models. R. Soc. Open Sci. 11, 231393.
+Takemoto K (2024) **The Moral Machine Experiment on Large Language Models.** R. Soc. Open Sci. 11, 231393.
 
 ## Requirements
 * Python 3.9
