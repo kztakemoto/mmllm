@@ -1,12 +1,12 @@
 # mmllm
 
-This repository contains data and code used in [*the Moral Machine experiment on large language models*](https://arxiv.org/abs/2309.05958).
+This repository contains data and code used in [*the moral machine experiment on large language models*](https://doi.org/10.1098/rsos.231393).
 
 ## Terms of use
 
 MIT licensed. Happy if you cite our papers when utilizing the codes:
 
-Takemoto K (2023) The Moral Machine Experiment on Large Language Models. arXiv:2309.05958.
+Takemoto K (2024) The Moral Machine Experiment on Large Language Models. R. Soc. Open Sci. 11, 231393.
 
 ## Requirements
 * Python 3.9
