@@ -1,34 +1,45 @@
 import pandas as pd
+import re
 
 import argparse
 
 #### Parameters #############
 parser = argparse.ArgumentParser(description='Run ChatGPT')
 parser.add_argument('--model', default='gpt-3.5-turbo-0613', type=str)
-parser.add_argument('--nb_scenarios', default='3', type=int)
 parser.add_argument('--random_seed', default='123', type=int)
+parser.add_argument('--inc_random', action='store_true', help='including random scenarios')
+parser.add_argument('--only_random', action='store_true', help='only random scenarios')
+parser.add_argument('--random_1vs1', action='store_true', help='random 1vs1 scenarios')
 args = parser.parse_args()
 
-df = pd.read_pickle("../results_{}_scenarios_seed{}_{}.pickle".format(args.nb_scenario, args.random_seed, args.model))
+if args.inc_random:
+  df_1 = pd.read_pickle("../results_50000_scenarios_seed123_{}.pickle".format(args.model))
+  df_2 = pd.read_pickle("../results_10000_random_scenarios_seed123_{}.pickle".format(args.model))
+  df = pd.concat([df_1, df_2], ignore_index=True)
+elif args.only_random:
+  df = pd.read_pickle("../results_10000_random_scenarios_seed123_{}.pickle".format(args.model))
+elif args.random_1vs1:
+  df = pd.read_pickle("../results_10000_random_1vs1_scenarios_seed123_{}.pickle".format(args.model))
+else:
+  df = pd.read_pickle("../chat_responses/results_50000_scenarios_seed123_{}.pickle".format(args.model))
 
 keywords = ["case 1", "case 2"]
 
 def response_classification(query):
-  label_seq = []
   text = query.lower()
-  for key in keywords:
-    if key in text:
-      label_seq.append(1)
-    else:
-      label_seq.append(0)
   
-  # classification
-  if label_seq == [1,0]:
-    label = 0
-  elif label_seq == [0,1]:
-    label = 1
+  pattern_case1 = re.compile(r"case\s?1")
+  pattern_case2 = re.compile(r"case\s?2")
+
+  match_case1 = pattern_case1.search(text) is not None
+  match_case2 = pattern_case2.search(text) is not None
+
+  if match_case1 and not match_case2:
+      label = 0
+  elif not match_case1 and match_case2:
+      label = 1
   else:
-    label = -1
+      label = -1
 
   return label
 
@@ -39,6 +50,12 @@ elif "palm" in args.model:
   df['label'] = df['palm2_response'].apply(response_classification)
 elif "llama" in args.model:
   df['label'] = df['llama2_response'].apply(response_classification)
+elif "vicuna" in args.model:
+  df['label'] = df['vicuna_response'].apply(response_classification)
+elif "gemini" in args.model:
+  df['label'] = df['gemini_response'].apply(response_classification)
+elif "claude" in args.model:
+  df['label'] = df['claude_response'].apply(response_classification)
 
 df = df[df["label"] >=0].reset_index(drop=True)
 print(df)
@@ -183,7 +200,13 @@ new_index_order = ["ResponseID", "ExtendedSessionID","UserID", "ScenarioOrder", 
 
 df = pd.DataFrame(sharedresponse_list)
 df = df[new_index_order]
-
-df.to_csv("shared_responses_{}.csv".format(args.model), index=False)
+if args.only_random:
+  df.to_csv("shared_responses_random_{}.csv".format(args.model), index=False)
+elif args.inc_random:
+  df.to_csv("shared_responses_{}_inc_random.csv".format(args.model), index=False)
+elif args.random_1vs1:
+  df.to_csv("shared_responses_random_1vs1_{}.csv".format(args.model), index=False)
+else:
+  df.to_csv("shared_responses_{}.csv".format(args.model), index=False)
 
 print(df)
