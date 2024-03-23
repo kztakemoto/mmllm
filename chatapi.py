@@ -128,9 +128,10 @@ class ChatBotManager:
         while attempt < self.max_attempts:
             try:
                 response = chat.send_message(user_prompt, **{
-                        "temperature": 0.9,
-                        "max_output_tokens": 1024,
-                        "top_p": 1.0,
+                            "temperature": 0.2,
+                            "max_output_tokens": 256,
+                            "top_p": 0.8,
+                            "top_k": 40,
                 })
 
                 response_text = response.text
