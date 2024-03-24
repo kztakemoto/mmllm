@@ -1,7 +1,6 @@
 import pandas as pd
 import random
 from tqdm import tqdm
-import time
 
 from generate_moral_machine_scenarios import generate_moral_machine_scenarios
 from chatapi import ChatBotManager
