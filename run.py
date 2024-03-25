@@ -16,7 +16,6 @@ parser.add_argument('--random_seed', default='123', type=int)
 args = parser.parse_args()
 
 # load LLM model (API)
-model_list = ["gpt", "gemini", "claude", "palm"]
 if any(s in args.model for s in ["gpt", "gemini", "claude", "palm"]):
   chat_model = ChatBotManager(model=args.model)
 elif any(s in args.model for s in ["llama", "vicuna"]):
