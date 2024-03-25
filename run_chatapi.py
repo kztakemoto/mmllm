@@ -41,7 +41,7 @@ for i in tqdm(range(args.nb_scenarios)):
 
   # obtain chatgpt response
   response = chat_model.chat(system_content, user_content)
-  scenario_info['chatgpt_response'] = response
+  scenario_info['chat_response'] = response
   #print(scenario_info)
 
   scenario_info_list.append(scenario_info)
