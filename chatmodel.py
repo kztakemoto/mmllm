@@ -8,8 +8,8 @@ class ChatModel:
 
         if "llama" in self.model.lower():
             self.generator = Llama.build(
-                ckpt_dir=f"../{self.model}/",
-                tokenizer_path="../tokenizer.model",
+                ckpt_dir=f"./{self.model}/",
+                tokenizer_path="./tokenizer.model",
                 max_seq_len=512,
                 max_batch_size=1,
             )
