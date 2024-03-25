@@ -4,6 +4,7 @@ from tqdm import tqdm
 
 from generate_moral_machine_scenarios import generate_moral_machine_scenarios
 from chatapi import ChatBotManager
+from chatmodel import ChatModel
 
 import argparse
 
@@ -18,6 +19,8 @@ args = parser.parse_args()
 model_list = ["gpt", "gemini", "claude", "palm"]
 if any(s in args.model for s in ["gpt", "gemini", "claude", "palm"]):
   chat_model = ChatBotManager(model=args.model)
+elif any(s in args.model for s in ["llama", "vicuna"]):
+  chat_model = ChatModel(model=args.model)
 else:
   raise ValueError("Unsupported model")
 
