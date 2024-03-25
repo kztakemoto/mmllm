@@ -20,18 +20,18 @@ pip install -r requirements.txt
 
 ## Usage
 ### Run the Moral Machine experiments on LLMs
-For GPT-3.5 (June version; gpt-3.5-turbo-0613)
+For GPT-3.5 (June 2023 version; gpt-3.5-turbo-0613)
 ```
 python run.py --model gpt-3.5-turbo-0613 --nb_scenarios 50000
 ```
 To specify the model, use the following arguments:
 * GPT-3.5:
-  * `--model gpt-3.5-turbo-1106`
-  * `--model gpt-3.5-turbo-0125`
+  * `--model gpt-3.5-turbo-1106` (November 2023 version)
+  * `--model gpt-3.5-turbo-0125` (January 2024 version)
 * GPT-4:
-  * `--model gpt-4-0613`
-  * `--model gpt-4-1106-preview`
-  * `--model gpt-4-0125-preview`
+  * `--model gpt-4-0613` (June 2023 version)
+  * `--model gpt-4-1106-preview` (November 2023 version)
+  * `--model gpt-4-0125-preview` (January 2024 version)
 * PaLM 2: `--model palm2`
 * Gemini-Pro: `--model gemini-pro`
 * Claude 3:
