@@ -1,7 +1,6 @@
 openai==0.27.4
 anthropic==0.19.1
 google-cloud-aiplatform==1.38.1
-fire==0.5.0
 fairscale==0.4.13
 sentencepiece==0.1.99
 tqdm==4.64.1
