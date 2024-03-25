@@ -44,18 +44,21 @@ def response_classification(query):
   return label
 
 # assign the response labels
-if "gpt" in args.model:
-  df['label'] = df['chatgpt_response'].apply(response_classification)
-elif "palm" in args.model:
-  df['label'] = df['palm2_response'].apply(response_classification)
-elif "llama" in args.model:
-  df['label'] = df['llama2_response'].apply(response_classification)
-elif "vicuna" in args.model:
-  df['label'] = df['vicuna_response'].apply(response_classification)
-elif "gemini" in args.model:
-  df['label'] = df['gemini_response'].apply(response_classification)
-elif "claude" in args.model:
-  df['label'] = df['claude_response'].apply(response_classification)
+if 'chat_response' in df.columns:
+  df['label'] = df['chat_response'].apply(response_classification)
+else:
+  if "gpt" in args.model:
+    df['label'] = df['chatgpt_response'].apply(response_classification)
+  elif "palm" in args.model:
+    df['label'] = df['palm2_response'].apply(response_classification)
+  elif "llama" in args.model:
+    df['label'] = df['llama2_response'].apply(response_classification)
+  elif "vicuna" in args.model:
+    df['label'] = df['vicuna_response'].apply(response_classification)
+  elif "gemini" in args.model:
+    df['label'] = df['gemini_response'].apply(response_classification)
+  elif "claude" in args.model:
+    df['label'] = df['claude_response'].apply(response_classification)
 
 df = df[df["label"] >=0].reset_index(drop=True)
 print(df)
