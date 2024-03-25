@@ -16,14 +16,16 @@ client = anthropic.Anthropic(
 
 # for PaLM and Gemini
 vertexai.init(project="ENTER YOUR PROJECT NAME", location="ENTER YOUR LOCATION")
-chat_model_gemini = GenerativeModel("gemini-1.0-pro-001")
-chat_model_palm = ChatModel.from_pretrained("chat-bison@001")
-
 
 class ChatBotManager:
     def __init__(self, model, max_attempts=20):
         self.model = model
         self.max_attempts = max_attempts
+                
+        if "gemini" in self.model.lower():
+            self.chat_model = GenerativeModel("gemini-1.0-pro-001")
+        elif "palm" in self.model.lower():
+            self.chat_model = ChatModel.from_pretrained("chat-bison@001")
 
     def chat(self, system_prompt, user_prompt):
         if "gpt" in self.model.lower():
@@ -93,7 +95,7 @@ class ChatBotManager:
         return None
     
     def chat_gemini(self, system_prompt, user_prompt):
-        chat = chat_model_gemini.start_chat()
+        chat = self.chat_model.start_chat()
         attempt = 0
         while attempt < self.max_attempts:
             try:
@@ -123,7 +125,7 @@ class ChatBotManager:
         return None
 
     def chat_palm(self, system_prompt, user_prompt):
-        chat = chat_model_palm.start_chat(context=system_prompt)
+        chat = self.chat_model.start_chat(context=system_prompt)
         attempt = 0
         while attempt < self.max_attempts:
             try:
