@@ -7,5 +7,6 @@ tqdm==4.64.1
 transformers==4.31.0
 accelerate==0.21.0
 bitsandbytes==0.37.2
+protobuf==5.26.0
 pandas==2.0.1
 tqdm==4.64.1
