@@ -40,6 +40,8 @@ To specify the model, use the following arguments:
   * Opus: `--model claude-3-opus-20240229`
 * Llama 2: `--model llama-2-7b-chat`
 * Vicuna: `--model vicuna-13b-v1.5`
+* Gemma:
+  * 2B instruct version: `--model gemma-2b-it`
 
 NOTE: For GPT-4 and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage cost constraints.
 For Llama 2, run as follow:
