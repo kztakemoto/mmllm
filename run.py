@@ -18,7 +18,7 @@ args = parser.parse_args()
 # load LLM model (API)
 if any(s in args.model for s in ["gpt", "gemini", "claude", "palm"]):
   chat_model = ChatBotManager(model=args.model)
-elif any(s in args.model for s in ["llama", "vicuna"]):
+elif any(s in args.model for s in ["llama", "vicuna", "gemma"]):
   chat_model = ChatModel(model=args.model)
 else:
   raise ValueError("Unsupported model")
