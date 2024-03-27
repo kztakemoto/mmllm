@@ -192,13 +192,7 @@ new_index_order = ["ResponseID", "ExtendedSessionID","UserID", "ScenarioOrder", 
 
 df = pd.DataFrame(sharedresponse_list)
 df = df[new_index_order]
-if args.only_random:
-  df.to_csv("shared_responses_random_{}.csv".format(args.model), index=False)
-elif args.inc_random:
-  df.to_csv("shared_responses_{}_inc_random.csv".format(args.model), index=False)
-elif args.random_1vs1:
-  df.to_csv("shared_responses_random_1vs1_{}.csv".format(args.model), index=False)
-else:
-  df.to_csv("shared_responses_{}.csv".format(args.model), index=False)
+
+df.to_csv("shared_responses_{}.csv".format(args.model), index=False)
 
 print(df)
