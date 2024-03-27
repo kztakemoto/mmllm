@@ -4,24 +4,13 @@ import re
 import argparse
 
 #### Parameters #############
-parser = argparse.ArgumentParser(description='Run ChatGPT')
+parser = argparse.ArgumentParser()
 parser.add_argument('--model', default='gpt-3.5-turbo-0613', type=str)
+parser.add_argument('--nb_scenarios', default='3', type=int)
 parser.add_argument('--random_seed', default='123', type=int)
-parser.add_argument('--inc_random', action='store_true', help='including random scenarios')
-parser.add_argument('--only_random', action='store_true', help='only random scenarios')
-parser.add_argument('--random_1vs1', action='store_true', help='random 1vs1 scenarios')
 args = parser.parse_args()
 
-if args.inc_random:
-  df_1 = pd.read_pickle("../results_50000_scenarios_seed123_{}.pickle".format(args.model))
-  df_2 = pd.read_pickle("../results_10000_random_scenarios_seed123_{}.pickle".format(args.model))
-  df = pd.concat([df_1, df_2], ignore_index=True)
-elif args.only_random:
-  df = pd.read_pickle("../results_10000_random_scenarios_seed123_{}.pickle".format(args.model))
-elif args.random_1vs1:
-  df = pd.read_pickle("../results_10000_random_1vs1_scenarios_seed123_{}.pickle".format(args.model))
-else:
-  df = pd.read_pickle("../chat_responses/results_50000_scenarios_seed123_{}.pickle".format(args.model))
+df = pd.read_pickle("results_{}_scenarios_seed{}_{}.pickle".format(args.nb_scenario, args.random_seed, args.model))
 
 keywords = ["case 1", "case 2"]
 
