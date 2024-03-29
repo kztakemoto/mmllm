@@ -43,7 +43,7 @@ To specify the model, use the following arguments:
 * Gemma: `--model gemma-2b-it`
 
 NOTE: For GPT-4 and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage cost constraints.
-For Llama 2, run as follow:
+For Llama 2, run as follows:
 ```
 OMP_NUM_THREADS=1 torchrun --nproc_per_node 1 run.py --model llama-2-7b-chat
 ```
