@@ -9,7 +9,7 @@ MIT licensed. Happy if you cite our papers when utilizing the codes:
 Takemoto K (2024) **The Moral Machine Experiment on Large Language Models.** R. Soc. Open Sci. 11, 231393.
 
 ## Requirements
-* Python 3.9 and PyTorch (v1.12.1; for Llama and Vicuna)
+* Python 3.9 and PyTorch (v2.1.2; for Llama, Vicuna, Gemma)
 ```
 pip install -r requirements.txt
 ```
