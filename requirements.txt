@@ -2,11 +2,10 @@ openai==0.27.4
 anthropic==0.19.1
 google-cloud-aiplatform==1.38.1
 fairscale==0.4.13
-sentencepiece==0.1.99
-tqdm==4.64.1
-transformers==4.31.0
-accelerate==0.21.0
-bitsandbytes==0.37.2
-protobuf==5.26.0
+sentencepiece==0.2.0
+transformers==4.39.2
+accelerate==0.28.0
+bitsandbytes==0.43.0
+protobuf==5.26.1
 pandas==2.0.1
 tqdm==4.64.1
