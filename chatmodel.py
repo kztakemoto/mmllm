@@ -80,7 +80,7 @@ class ChatModel:
         return str(response)
 
     def chat_gemma(self, system_prompt, user_prompt):
-        prompt = f"<start_of_turn>user\nPlease respond to binary questions.\n\n{system_prompt}\n\n{user_prompt}<end_of_turn>\n<start_of_turn>model"
+        prompt = f"<bos><start_of_turn>user\nPlease respond to binary questions.\n\n{system_prompt}\n\n{user_prompt}<end_of_turn>\n<start_of_turn>model"
         
         token_ids = self.tokenizer.encode(prompt, add_special_tokens=False, return_tensors="pt")
         with torch.no_grad():
