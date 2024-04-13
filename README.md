@@ -32,6 +32,7 @@ To specify the model, use the following arguments:
   * `--model gpt-4-0613` (June 2023 version)
   * `--model gpt-4-1106-preview` (November 2023 version)
   * `--model gpt-4-0125-preview` (January 2024 version)
+  * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
 * PaLM 2: `--model palm2`
 * Gemini-Pro: `--model gemini-pro`
 * Claude 3:
