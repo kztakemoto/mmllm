@@ -43,8 +43,8 @@ To specify the model, use the following arguments:
   * Opus: `--model claude-3-opus-20240229`
 * Llama:
   * 2 7B Chat: `--model llama-2-7b-chat`
-  * 3 8B Instruct: `--model --model Meta-Llama-3-8B-Instruct`
-  * 3 70B Instruct: `--model --model Meta-Llama-3-70B-Instruct`
+  * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
+  * 3 70B Instruct: `--model Meta-Llama-3-70B-Instruct`
 * Vicuna: `--model vicuna-13b-v1.5`
 * Mistral: `--model Mistral-7B-Instruct-v0.2`
 * Gemma:
