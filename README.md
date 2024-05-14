@@ -33,6 +33,8 @@ To specify the model, use the following arguments:
   * `--model gpt-4-1106-preview` (November 2023 version)
   * `--model gpt-4-0125-preview` (January 2024 version)
   * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
+* GPT-4o:
+  * `--model gpt-4o-2024-05-13` (May 2024 version)
 * PaLM 2: `--model palm2`
 * Gemini-Pro:
   * 1.0: `--model gemini-pro`
@@ -54,7 +56,7 @@ To specify the model, use the following arguments:
   * 1.1-7B-it: `--model gemma-1.1-7b-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
 
-NOTE: For GPT-4 and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage cost constraints.
+NOTE: For GPT-4, GPT-4o, and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage cost constraints.
 For Llama (except for 3 70B Instruct), run as follows:
 ```
 OMP_NUM_THREADS=1 torchrun --nproc_per_node 1 run.py --model llama-2-7b-chat
