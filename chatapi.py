@@ -23,10 +23,7 @@ class ChatBotManager:
         self.max_attempts = max_attempts
                 
         if "gemini" in self.model.lower():
-            if "1.5" in self.model.lower():
-                self.chat_model = GenerativeModel("gemini-1.5-pro-preview-0409")
-            else:
-                self.chat_model = GenerativeModel("gemini-1.0-pro-001")
+            self.chat_model = GenerativeModel(self.model)
         elif "palm" in self.model.lower():
             self.chat_model = ChatModel.from_pretrained("chat-bison@001")
 
