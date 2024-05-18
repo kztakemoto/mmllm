@@ -25,20 +25,21 @@ For GPT-3.5 (June 2023 version; gpt-3.5-turbo-0613)
 python run.py --model gpt-3.5-turbo-0613 --nb_scenarios 50000
 ```
 To specify the model, use the following arguments:
-* GPT-3.5:
-  * `--model gpt-3.5-turbo-1106` (November 2023 version)
-  * `--model gpt-3.5-turbo-0125` (January 2024 version)
-* GPT-4:
-  * `--model gpt-4-0613` (June 2023 version)
-  * `--model gpt-4-1106-preview` (November 2023 version)
-  * `--model gpt-4-0125-preview` (January 2024 version)
-  * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
-* GPT-4o:
-  * `--model gpt-4o-2024-05-13` (May 2024 version)
+* GPT
+  * 3.5:
+    * `--model gpt-3.5-turbo-1106` (November 2023 version)
+    * `--model gpt-3.5-turbo-0125` (January 2024 version)
+  * 4:
+    * `--model gpt-4-0613` (June 2023 version)
+    * `--model gpt-4-1106-preview` (November 2023 version)
+    * `--model gpt-4-0125-preview` (January 2024 version)
+    * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
+  * 4o: `--model gpt-4o-2024-05-13` (May 2024 version)
 * PaLM 2: `--model palm2`
-* Gemini-Pro:
-  * 1.0: `--model gemini-pro`
-  * 1.5: `--model gemini-pro-1.5`
+* Gemini:
+  * 1.0 Pro: `--model gemini-1.0-pro-001`
+  * 1.5 Pro: `--model gemini-1.5-pro-preview-0409`
+  * 1.5 Flash: `--model gemini-1.5-flash-preview-0514`
 * Claude 3:
   * Haiku: `--model claude-3-haiku-20240307`
   * Sonnet: `--model claude-3-sonnet-20240229`
@@ -56,7 +57,7 @@ To specify the model, use the following arguments:
   * 1.1-7B-it: `--model gemma-1.1-7b-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
 
-NOTE: For GPT-4, GPT-4o, and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage cost constraints.
+NOTE: For GPT-4, GPT-4o, Gemini 1.5, and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage constraints.
 For Llama (except for 3 70B Instruct), run as follows:
 ```
 OMP_NUM_THREADS=1 torchrun --nproc_per_node 1 run.py --model llama-2-7b-chat
