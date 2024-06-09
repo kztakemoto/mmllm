@@ -38,8 +38,12 @@ To specify the model, use the following arguments:
 * PaLM 2: `--model palm2`
 * Gemini:
   * 1.0 Pro: `--model gemini-1.0-pro-001`
-  * 1.5 Pro: `--model gemini-1.5-pro-preview-0409`
-  * 1.5 Flash: `--model gemini-1.5-flash-preview-0514`
+  * 1.5 Pro:
+    * `--model gemini-1.5-pro-preview-0409` (April 2024 preview version)
+    * `--model gemini-1.5-pro-001` (GA version)
+  * 1.5 Flash:
+    * `--model gemini-1.5-flash-preview-0514` (Preview version)
+    * `--model gemini-1.5-flash-001` (GA version)
 * Claude 3:
   * Haiku: `--model claude-3-haiku-20240307`
   * Sonnet: `--model claude-3-sonnet-20240229`
