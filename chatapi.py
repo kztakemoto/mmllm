@@ -1,7 +1,7 @@
 import time
 
 import vertexai
-from vertexai.preview.generative_models import GenerativeModel
+from vertexai.generative_models import GenerativeModel
 from vertexai.preview.language_models import ChatModel
 
 # for ChatGPT
