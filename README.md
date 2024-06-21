@@ -44,10 +44,11 @@ To specify the model, use the following arguments:
   * 1.5 Flash:
     * `--model gemini-1.5-flash-preview-0514` (Preview version)
     * `--model gemini-1.5-flash-001` (GA version)
-* Claude 3:
-  * Haiku: `--model claude-3-haiku-20240307`
-  * Sonnet: `--model claude-3-sonnet-20240229`
-  * Opus: `--model claude-3-opus-20240229`
+* Claude:
+  * 3 Haiku: `--model claude-3-haiku-20240307`
+  * 3 Sonnet: `--model claude-3-sonnet-20240229`
+  * 3.5 Sonnet: `--model claude-3-5-sonnet-20240620`
+  * 3 Opus: `--model claude-3-opus-20240229`
 * Llama:
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
