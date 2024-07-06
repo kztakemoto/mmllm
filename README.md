@@ -60,6 +60,8 @@ To specify the model, use the following arguments:
   * 7B-it: `--model gemma-7b-it`
   * 1.1-2B-it`: --model gemma-1.1-2b-it`
   * 1.1-7B-it: `--model gemma-1.1-7b-it`
+  * 2-9B-it: `--model gemma-2-9b-it`
+  * 2-27B-it: `--model gemma-2-27b-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
 
 NOTE: For GPT-4, GPT-4o, Gemini 1.5, and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage constraints.
