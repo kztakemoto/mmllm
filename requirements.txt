@@ -3,7 +3,7 @@ anthropic==0.19.1
 google-cloud-aiplatform==1.49.0
 fairscale==0.4.13
 sentencepiece==0.2.0
-transformers==4.41.0.dev0
+transformers==4.42.3
 accelerate==0.29.3
 bitsandbytes==0.43.1
 protobuf==5.26.1
