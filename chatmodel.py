@@ -53,7 +53,7 @@ class ChatModel:
 
             self.generator = AutoModelForCausalLM.from_pretrained(
                 "google/{}".format(self.model),
-                torch_dtype=torch.float16,
+                torch_dtype=torch.bfloat16,
                 device_map="auto",
             )
         elif "mistral" in self.model.lower():
