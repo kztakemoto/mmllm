@@ -35,6 +35,7 @@ To specify the model, use the following arguments:
     * `--model gpt-4-0125-preview` (January 2024 version)
     * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
   * 4o: `--model gpt-4o-2024-05-13` (May 2024 version)
+  * 4o-mini: `--model gpt-4o-mini-2024-07-18` (July 2024 version)
 * PaLM 2: `--model palm2`
 * Gemini:
   * 1.0 Pro: `--model gemini-1.0-pro-001`
