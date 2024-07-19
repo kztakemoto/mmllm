@@ -56,6 +56,7 @@ To specify the model, use the following arguments:
   * 3 70B Instruct: `--model Meta-Llama-3-70B-Instruct`
 * Vicuna: `--model vicuna-13b-v1.5`
 * Mistral: `--model Mistral-7B-Instruct-v0.2`
+* Mistral-NeMo: `--model Mistral-Nemo-Instruct-2407`
 * Gemma:
   * 2B-it: `--model gemma-2b-it`
   * 7B-it: `--model gemma-7b-it`
