@@ -31,44 +31,11 @@ class ChatModel:
             else:
                 from llama import Llama
                 self.generator = Llama.build(
-                    # ckpt_dir=f"../../llama3/{self.model}/",
-                    # tokenizer_path=f"../../llama3/{self.model}/tokenizer.model",
-                    ckpt_dir=f"../{self.model}/",
-                    tokenizer_path=f"../tokenizer.model",
+                    ckpt_dir=f"./{self.model}/",
+                    tokenizer_path=f"./{self.model}/tokenizer.model",
                     max_seq_len=512,
                     max_batch_size=1,
                 )
-
-            # if self.model == "Meta-Llama-3-70B-Instruct":
-            #     self.tokenizer = AutoTokenizer.from_pretrained(
-            #         "meta-llama/Meta-Llama-3-70B-Instruct",
-            #     )
-
-            #     if self.tokenizer.pad_token is None:
-            #         self.tokenizer.pad_token = self.tokenizer.eos_token
-
-            #     self.generator = AutoModelForCausalLM.from_pretrained(
-            #         "meta-llama/Meta-Llama-3-70B-Instruct",
-            #         load_in_4bit=True,
-            #         bnb_4bit_compute_dtype=torch.bfloat16,
-            #         device_map="auto",
-            #     )
-            # else:
-            #     if "llama-2" in self.model.lower():
-            #         from llama import Llama
-            #     elif "llama-3-8b" in self.model.lower():
-            #         from llama3 import Llama
-            #     else:
-            #         raise ValueError("unsupprted llama model")
-
-            #     self.generator = Llama.build(
-            #         ckpt_dir=f"../../llama3/{self.model}/",
-            #         tokenizer_path=f"../../llama3/{self.model}/tokenizer.model",
-            #         #ckpt_dir=f"../{self.model}/",
-            #         #tokenizer_path=f"../tokenizer.model",
-            #         max_seq_len=512,
-            #         max_batch_size=1,
-            #     )
 
         elif "vicuna" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
