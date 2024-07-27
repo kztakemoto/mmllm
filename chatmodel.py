@@ -6,34 +6,69 @@ class ChatModel:
         self.model = model
 
         if "llama" in self.model.lower():
-            if self.model == "Meta-Llama-3-70B-Instruct":
+            if "llama-3" in self.model.lower():
                 self.tokenizer = AutoTokenizer.from_pretrained(
-                    "meta-llama/Meta-Llama-3-70B-Instruct",
+                    f"meta-llama/{self.model}",
                 )
 
                 if self.tokenizer.pad_token is None:
                     self.tokenizer.pad_token = self.tokenizer.eos_token
 
-                self.generator = AutoModelForCausalLM.from_pretrained(
-                    "meta-llama/Meta-Llama-3-70B-Instruct",
-                    load_in_4bit=True,
-                    bnb_4bit_compute_dtype=torch.bfloat16,
-                    device_map="auto",
-                )
-            else:
-                if "llama-2" in self.model.lower():
-                    from llama import Llama
-                elif "llama-3-8b" in self.model.lower():
-                    from llama3 import Llama
-                else:
-                    raise ValueError("unsupprted llama model")
+                if "70b" in self.model.lower():
+                    self.generator = AutoModelForCausalLM.from_pretrained(
+                        f"meta-llama/{self.model}",
+                        load_in_4bit=True,
+                        bnb_4bit_compute_dtype=torch.bfloat16,
+                        device_map="auto",
+                    )
 
+                else:
+                    self.generator = AutoModelForCausalLM.from_pretrained(
+                        f"meta-llama/{self.model}",
+                        torch_dtype=torch.bfloat16,
+                        device_map="auto",
+                    )
+            else:
+                from llama import Llama
                 self.generator = Llama.build(
-                    ckpt_dir=f"./{self.model}/",
-                    tokenizer_path=f"./{self.model}/tokenizer.model",
+                    # ckpt_dir=f"../../llama3/{self.model}/",
+                    # tokenizer_path=f"../../llama3/{self.model}/tokenizer.model",
+                    ckpt_dir=f"../{self.model}/",
+                    tokenizer_path=f"../tokenizer.model",
                     max_seq_len=512,
                     max_batch_size=1,
                 )
+
+            # if self.model == "Meta-Llama-3-70B-Instruct":
+            #     self.tokenizer = AutoTokenizer.from_pretrained(
+            #         "meta-llama/Meta-Llama-3-70B-Instruct",
+            #     )
+
+            #     if self.tokenizer.pad_token is None:
+            #         self.tokenizer.pad_token = self.tokenizer.eos_token
+
+            #     self.generator = AutoModelForCausalLM.from_pretrained(
+            #         "meta-llama/Meta-Llama-3-70B-Instruct",
+            #         load_in_4bit=True,
+            #         bnb_4bit_compute_dtype=torch.bfloat16,
+            #         device_map="auto",
+            #     )
+            # else:
+            #     if "llama-2" in self.model.lower():
+            #         from llama import Llama
+            #     elif "llama-3-8b" in self.model.lower():
+            #         from llama3 import Llama
+            #     else:
+            #         raise ValueError("unsupprted llama model")
+
+            #     self.generator = Llama.build(
+            #         ckpt_dir=f"../../llama3/{self.model}/",
+            #         tokenizer_path=f"../../llama3/{self.model}/tokenizer.model",
+            #         #ckpt_dir=f"../{self.model}/",
+            #         #tokenizer_path=f"../tokenizer.model",
+            #         max_seq_len=512,
+            #         max_batch_size=1,
+            #     )
 
         elif "vicuna" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
@@ -70,6 +105,7 @@ class ChatModel:
                 torch_dtype=torch.float16,
                 device_map="auto",
             )
+            
         elif "command" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "CohereForAI/{}".format(self.model),
@@ -84,7 +120,7 @@ class ChatModel:
 
     def chat(self, system_prompt, user_prompt):
         if "llama" in self.model.lower():
-            if self.model == "Meta-Llama-3-70B-Instruct":
+            if "llama-3" in self.model.lower():
                 return self.chat_llama_hf(system_prompt, user_prompt)
             else:
                 return self.chat_llama(system_prompt, user_prompt)
@@ -207,3 +243,4 @@ class ChatModel:
         response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
 
         return str(response)
+
