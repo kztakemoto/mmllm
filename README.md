@@ -13,7 +13,7 @@ Takemoto K (2024) **The Moral Machine Experiment on Large Language Models.** R. 
 ```
 pip install -r requirements.txt
 ```
-**NOTE:** To run the script `run.py`, an OpenAI API key for ChatGPT (GPT-3.5 and GPT-4) and Anthropic API key for Claude 3 are required. Please obtain your API key by following [OpenAI's instructions](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) and [Anthropic's instructions](https://support.anthropic.com/en/articles/8114521-how-can-i-access-the-claude-api). For PaLM 2 and Gemini, setup is required. Please refer to [the Google Cloud instructions](https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal). The API keys and Google Cloud information must be specified in the `chatapi.py` file. The Llama model files must be downloaded. Please follow the instructions on [Llama2](https://github.com/facebookresearch/llama) and [Llama3](https://github.com/meta-llama/llama3/tree/main) provided by Meta to download the files. The files should be placed in the same directory for proper execution. For Gemma, authentication is needed. Please refer to [the HuggingFace instructions](https://huggingface.co/docs/huggingface_hub/quick-start#authentication).
+**NOTE:** To run the script `run.py`, an OpenAI API key for ChatGPT (GPT-3.5 and GPT-4) and Anthropic API key for Claude 3 are required. Please obtain your API key by following [OpenAI's instructions](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) and [Anthropic's instructions](https://support.anthropic.com/en/articles/8114521-how-can-i-access-the-claude-api). For PaLM 2 and Gemini, setup is required. Please refer to [the Google Cloud instructions](https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal). The API keys and Google Cloud information must be specified in the `chatapi.py` file. The Llama 2 model files must be downloaded. Please follow the instructions on [Llama2](https://github.com/facebookresearch/llama) provided by Meta to download the files. The files should be placed in the same directory for proper execution.
 
 * R (ver. 4.3.0)
 * see also the headers of `figure1.R` and `figure2.R`
@@ -54,6 +54,8 @@ To specify the model, use the following arguments:
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
   * 3 70B Instruct: `--model Meta-Llama-3-70B-Instruct`
+  * 3.1 8B Instruct: `--model Meta-Llama-3.1-8B-Instruct`
+  * 3.1 70B Instruct: `--model Meta-Llama-3.1-70B-Instruct`
 * Vicuna: `--model vicuna-13b-v1.5`
 * Mistral: `--model Mistral-7B-Instruct-v0.2`
 * Mistral-NeMo: `--model Mistral-Nemo-Instruct-2407`
@@ -67,7 +69,7 @@ To specify the model, use the following arguments:
 * Command R+: `--model c4ai-command-r-plus-4bit`
 
 NOTE: For GPT-4, GPT-4o, Gemini 1.5, and Claude 3 Opus, `--nb_scenarios 10000` was used, considering the API usage constraints.
-For Llama (except for 3 70B Instruct), run as follows:
+For Llama 2, run as follows:
 ```
 OMP_NUM_THREADS=1 torchrun --nproc_per_node 1 run.py --model llama-2-7b-chat
 ```
