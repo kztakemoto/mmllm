@@ -49,14 +49,14 @@ print(explained_variance_ratio)
 df_pca <- as.data.frame(pca_result$x)
 gg <- ggplot(df_pca, aes(x=PC1, y=PC2)) +
     geom_point(size=5) +
-    geom_label_repel(aes(label=rownames(df_pca)), box.padding = 0.5, point.padding = 0.5, size=8) +
+    geom_label_repel(aes(label=rownames(df_pca)), box.padding = 0.5, point.padding = 0.5, size=3, max.overlaps = Inf) +
     labs(x = paste("PC1 (", round(explained_variance_ratio[1]*100, 1), "%)", sep=""),
         y = paste("PC2 (", round(explained_variance_ratio[2]*100, 1), "%)", sep="")) +
     theme(
         legend.position = "none",
         aspect.ratio = 1,
-        axis.title = element_text(size = 22, color="black"),
-        axis.text = element_text(size = 20, color="black"),
+        axis.title = element_text(size = 18, color="black"),
+        axis.text = element_text(size = 14, color="black"),
     )
 
 ggsave("figure2b.png", plot = gg, width = 6, height = 6)
