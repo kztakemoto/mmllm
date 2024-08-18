@@ -16,9 +16,9 @@ parser.add_argument('--random_seed', default='123', type=int)
 args = parser.parse_args()
 
 # load LLM model (API)
-if any(s in args.model for s in ["gpt", "gemini", "claude", "palm"]):
+if any(s.lower() in args.model.lower() for s in ["gpt", "gemini", "claude", "palm"]):
   chat_model = ChatBotManager(model=args.model)
-elif any(s in args.model for s in ["llama", "vicuna", "gemma"]):
+elif any(s.lower() in args.model.lower() for s in ["llama", "vicuna", "gemma", "mistral", "command"]):
   chat_model = ChatModel(model=args.model)
 else:
   raise ValueError("Unsupported model")
