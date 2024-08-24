@@ -4,7 +4,8 @@ google-cloud-aiplatform==1.49.0
 fairscale==0.4.13
 sentencepiece==0.2.0
 transformers==4.43.2
-accelerate==0.29.3
+accelerate==0.31.0
+flash-attn==2.6.3
 bitsandbytes==0.43.1
 protobuf==5.26.1
 pandas==2.0.1
