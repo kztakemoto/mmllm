@@ -9,7 +9,7 @@ MIT licensed. Happy if you cite our papers when utilizing the codes:
 Takemoto K (2024) **The Moral Machine Experiment on Large Language Models.** R. Soc. Open Sci. 11, 231393.
 
 ## Requirements
-* Python 3.11 and PyTorch (v2.1.2; for the open-source LLMs such as Llama)
+* Python 3.11 and PyTorch (v2.3.1; for the open-source LLMs such as Llama)
 ```
 pip install -r requirements.txt
 ```
@@ -68,6 +68,9 @@ To specify the model, use the following arguments:
   * 2-9B-it: `--model gemma-2-9b-it`
   * 2-27B-it: `--model gemma-2-27b-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
+* Phi-3.5:
+  *  MoE-instruct: `--model Phi-3.5-MoE-instruct`
+  *  mini-instruct: `--model Phi-3.5-mini-instruct`
 
 NOTE: For Llama 2, run as follows:
 ```
