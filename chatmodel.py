@@ -82,6 +82,27 @@ class ChatModel:
                 "CohereForAI/{}".format(self.model),
                 device_map="auto",
             )
+        elif "phi-3.5" in self.model.lower():
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                "microsoft/{}".format(self.model),
+            )
+
+            if "moe" in self.model.lower():
+                self.generator = AutoModelForCausalLM.from_pretrained(
+                    "microsoft/{}".format(self.model),
+                    device_map="auto", 
+                    torch_dtype="auto", 
+                    trust_remote_code=True,
+                    load_in_4bit=True,
+                    bnb_4bit_compute_dtype=torch.bfloat16,
+                )
+            else:
+                self.generator = AutoModelForCausalLM.from_pretrained(
+                    "microsoft/{}".format(self.model),
+                    device_map="auto", 
+                    torch_dtype="auto", 
+                    trust_remote_code=True,
+                )
         else:
             raise ValueError("unsupprted model")
 
@@ -99,6 +120,8 @@ class ChatModel:
             return self.chat_mistral(system_prompt, user_prompt)
         elif "command" in self.model.lower():
             return self.chat_command(system_prompt, user_prompt)
+        elif "phi-3.5" in self.model.lower():
+            return self.chat_phi(system_prompt, user_prompt)
 
     def chat_llama(self, system_prompt, user_prompt):
         dialogs = [
@@ -202,6 +225,25 @@ class ChatModel:
                 max_new_tokens=100,
                 do_sample=True,
                 temperature=0.3,
+                top_p=1.0,
+                pad_token_id=self.tokenizer.pad_token_id,
+                bos_token_id=self.tokenizer.bos_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
+            )
+        response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
+
+        return str(response)
+        
+    def chat_phi(self, system_prompt, user_prompt):
+        prompt = f"<|system|>\n{system_prompt}<|end|>\n<|user|>\n{user_prompt}<|end|>\n<|assistant|>"
+
+        token_ids = self.tokenizer.encode(prompt, add_special_tokens=False, return_tensors="pt")
+        with torch.no_grad():
+            output_ids = self.generator.generate(
+                token_ids.to(self.generator.device),
+                max_new_tokens=100,
+                do_sample=True,
+                temperature=0.7,
                 top_p=1.0,
                 pad_token_id=self.tokenizer.pad_token_id,
                 bos_token_id=self.tokenizer.bos_token_id,
