@@ -30,7 +30,7 @@ To specify the model, use the following arguments:
     * `--model gpt-3.5-turbo-1106` (November 2023 version)
     * `--model gpt-3.5-turbo-0125` (January 2024 version)
   * 4:
-    * `--model gpt-4-0613` (June 2023 version)
+    * `--model gpt-4-0613` (June 2023 version; no longer be available on September 13, 2024)
     * `--model gpt-4-1106-preview` (November 2023 version)
     * `--model gpt-4-0125-preview` (January 2024 version)
     * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
