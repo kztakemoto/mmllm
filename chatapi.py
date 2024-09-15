@@ -30,6 +30,8 @@ class ChatBotManager:
     def chat(self, system_prompt, user_prompt):
         if "gpt" in self.model.lower():
             return self.chat_gpt(system_prompt, user_prompt)
+        elif "o1" in self.model.lower():
+            return self.chat_o1(system_prompt, user_prompt)
         elif "gemini" in self.model.lower():
             return self.chat_gemini(system_prompt, user_prompt)
         elif "palm" in self.model.lower():
@@ -46,6 +48,26 @@ class ChatBotManager:
                     messages = [
                             {"role": "system", "content": system_prompt},
                             {"role": "user", "content": user_prompt}
+                        ],
+                )
+                response_text = response['choices'][0]['message']['content']
+                
+                return response_text
+
+            except openai.error.OpenAIError as e:
+                time.sleep(5)
+                attempt = attempt + 1
+        
+        return None
+                
+    def chat_o1(self, system_prompt, user_prompt):
+        attempt = 0
+        while attempt < self.max_attempts:
+            try:
+                response = openai.ChatCompletion.create(
+                    model=self.model,
+                    messages = [
+                            {"role": "user", "content": f"{system_prompt}\n\n{user_prompt}"}
                         ],
                 )
                 response_text = response['choices'][0]['message']['content']
