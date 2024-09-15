@@ -25,19 +25,21 @@ For GPT-3.5 (June 2023 version; gpt-3.5-turbo-0613; no longer be available on Se
 python run.py --model gpt-3.5-turbo-0613 --nb_scenarios 50000
 ```
 To specify the model, use the following arguments:
-* GPT
-  * 3.5:
+* OpenAI
+  * GPT-3.5:
     * `--model gpt-3.5-turbo-1106` (November 2023 version)
     * `--model gpt-3.5-turbo-0125` (January 2024 version)
-  * 4:
+  * GPT-4:
     * `--model gpt-4-0613` (June 2023 version)
     * `--model gpt-4-1106-preview` (November 2023 version)
     * `--model gpt-4-0125-preview` (January 2024 version)
     * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
-  * 4o:
+  * GPT-4o:
     * `--model gpt-4o-2024-05-13` (May 2024 version)
     * `--model gpt-4o-2024-08-06` (August 2024 version)
-  * 4o-mini: `--model gpt-4o-mini-2024-07-18` (July 2024 version)
+  * GPT-4o-mini: `--model gpt-4o-mini-2024-07-18` (July 2024 version)
+  * o1: `--model o1-preview-2024-09-12` (September 2024 version)
+  * o1-mini: `--model o1-mini-2024-09-12` (September 2024 version)
 * PaLM 2: `--model palm2`
 * Gemini:
   * 1.0 Pro: `--model gemini-1.0-pro-001`
