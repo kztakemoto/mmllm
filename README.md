@@ -71,6 +71,7 @@ To specify the model, use the following arguments:
   * 2-2b-it: `--model gemma-2-2b-it`
   * 2-9B-it: `--model gemma-2-9b-it`
   * 2-27B-it: `--model gemma-2-27b-it`
+  * DataGemma RIG 27B: `--model datagemma-rig-27b-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
 * Phi-3.5:
   *  MoE-instruct: `--model Phi-3.5-MoE-instruct`
