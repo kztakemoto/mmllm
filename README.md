@@ -45,10 +45,12 @@ To specify the model, use the following arguments:
   * 1.0 Pro: `--model gemini-1.0-pro-001`
   * 1.5 Pro:
     * `--model gemini-1.5-pro-preview-0409` (April 2024 preview version)
-    * `--model gemini-1.5-pro-001` (GA version)
+    * `--model gemini-1.5-pro-001`
+    * `--model gemini-1.5-pro-002`
   * 1.5 Flash:
     * `--model gemini-1.5-flash-preview-0514` (Preview version)
-    * `--model gemini-1.5-flash-001` (GA version)
+    * `--model gemini-1.5-flash-001`
+    * `--model gemini-1.5-flash-002`
 * Claude:
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
@@ -60,6 +62,8 @@ To specify the model, use the following arguments:
   * 3 70B Instruct: `--model Meta-Llama-3-70B-Instruct`
   * 3.1 8B Instruct: `--model Meta-Llama-3.1-8B-Instruct`
   * 3.1 70B Instruct: `--model Meta-Llama-3.1-70B-Instruct`
+  * 3.2 1B Instruct: `--model Llama-3.2-1B-Instruct`
+  * 3.2 3B Instruct: `--model Llama-3.2-3B-Instruct`
 * Vicuna: `--model vicuna-13b-v1.5`
 * Mistral: `--model Mistral-7B-Instruct-v0.2`
 * Mistral-NeMo: `--model Mistral-Nemo-Instruct-2407`
