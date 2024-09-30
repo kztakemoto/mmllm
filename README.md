@@ -27,7 +27,7 @@ python run.py --model gpt-3.5-turbo-0613 --nb_scenarios 50000
 To specify the model, use the following arguments:
 * OpenAI
   * GPT-3.5:
-    *`--model gpt-3.5-turbo-0301` (March 2023 version)
+    * `--model gpt-3.5-turbo-0301` (March 2023 version)
     * `--model gpt-3.5-turbo-1106` (November 2023 version)
     * `--model gpt-3.5-turbo-0125` (January 2024 version)
   * GPT-4:
