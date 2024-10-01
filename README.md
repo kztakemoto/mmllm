@@ -31,6 +31,7 @@ To specify the model, use the following arguments:
     * `--model gpt-3.5-turbo-1106` (November 2023 version)
     * `--model gpt-3.5-turbo-0125` (January 2024 version)
   * GPT-4:
+    * `--model gpt-4-0314` (March 2023 version)
     * `--model gpt-4-0613` (June 2023 version)
     * `--model gpt-4-1106-preview` (November 2023 version)
     * `--model gpt-4-0125-preview` (January 2024 version)
@@ -46,6 +47,7 @@ To specify the model, use the following arguments:
   * 1.0 Pro: `--model gemini-1.0-pro-001`
   * 1.5 Pro:
     * `--model gemini-1.5-pro-preview-0409` (April 2024 preview version)
+    * `--model gemini-1.5-pro-preview-0514` (May 2024 preview version)
     * `--model gemini-1.5-pro-001`
     * `--model gemini-1.5-pro-002`
   * 1.5 Flash:
