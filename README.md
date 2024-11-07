@@ -60,6 +60,7 @@ To specify the model, use the following arguments:
   * 3 Opus: `--model claude-3-opus-20240229`
   * 3.5 Sonnet (June 2024 version): `--model claude-3-5-sonnet-20240620`
   * 3.5 Sonnet (October 2024 version): `--model claude-3-5-sonnet-20241022`
+  * 3.5 Haiku: `--model claude-3-5-haiku-20241022`
 * Llama:
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
