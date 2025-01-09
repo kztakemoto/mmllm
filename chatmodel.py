@@ -82,7 +82,7 @@ class ChatModel:
                 "CohereForAI/{}".format(self.model),
                 device_map="auto",
             )
-        elif "phi-3.5" in self.model.lower():
+        elif "phi-" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "microsoft/{}".format(self.model),
             )
