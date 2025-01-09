@@ -86,9 +86,10 @@ To specify the model, use the following arguments:
   * 2-27B-it: `--model gemma-2-27b-it`
   * DataGemma RIG 27B: `--model datagemma-rig-27b-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
-* Phi-3.5:
-  *  MoE-instruct: `--model Phi-3.5-MoE-instruct`
-  *  mini-instruct: `--model Phi-3.5-mini-instruct`
+* Phi:
+  *  3.5 MoE-instruct: `--model Phi-3.5-MoE-instruct`
+  *  3.5 mini-instruct: `--model Phi-3.5-mini-instruct`
+  *  4 `--model phi-4`
 
 NOTE: For Llama 2, run as follows:
 ```
