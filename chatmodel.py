@@ -5,7 +5,38 @@ class ChatModel:
     def __init__(self, model):
         self.model = model
 
-        if "llama" in self.model.lower():
+        if "deepseek" in self.model.lower():
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                "deepseek-ai/{}".format(self.model),
+            )
+
+            self.generator = AutoModelForCausalLM.from_pretrained(
+                f"deepseek-ai/{self.model}",
+                torch_dtype=torch.bfloat16,
+                device_map="auto",
+            )
+        
+        elif "qwen" in self.model.lower():
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                "Qwen/{}".format(self.model),
+            )
+
+            if "72b" in self.model.lower():
+                    self.generator = AutoModelForCausalLM.from_pretrained(
+                        f"Qwen/{self.model}",
+                        load_in_4bit=True,
+                        bnb_4bit_compute_dtype=torch.bfloat16,
+                        device_map="auto",
+                    )
+
+            else:
+                self.generator = AutoModelForCausalLM.from_pretrained(
+                    f"Qwen/{self.model}",
+                    torch_dtype=torch.bfloat16,
+                    device_map="auto",
+                )
+
+        elif "llama" in self.model.lower():
             if "llama-3" in self.model.lower():
                 self.tokenizer = AutoTokenizer.from_pretrained(
                     f"meta-llama/{self.model}",
@@ -107,7 +138,11 @@ class ChatModel:
             raise ValueError("unsupprted model")
 
     def chat(self, system_prompt, user_prompt):
-        if "llama" in self.model.lower():
+        if "deepseek" in self.model.lower():
+            return self.chat_deepseek(system_prompt, user_prompt)
+        elif "qwen" in self.model.lower():
+            return self.chat_qwen(system_prompt, user_prompt)
+        elif "llama" in self.model.lower():
             if "llama-3" in self.model.lower():
                 return self.chat_llama_hf(system_prompt, user_prompt)
             else:
@@ -120,7 +155,7 @@ class ChatModel:
             return self.chat_mistral(system_prompt, user_prompt)
         elif "command" in self.model.lower():
             return self.chat_command(system_prompt, user_prompt)
-        elif "phi-3.5" in self.model.lower():
+        elif "phi" in self.model.lower():
             return self.chat_phi(system_prompt, user_prompt)
 
     def chat_llama(self, system_prompt, user_prompt):
@@ -155,6 +190,46 @@ class ChatModel:
                 eos_token_id=self.tokenizer.convert_tokens_to_ids("<|eot_id|>"),
             )
         response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
+
+        return str(response)
+
+    def chat_deepseek(self, system_prompt, user_prompt):
+        prompt = f"<｜begin▁of▁sentence｜>Please respond to binary questions. {system_prompt}<｜User｜>{user_prompt}<｜Assistant｜>"
+        
+        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.generator.device)
+        with torch.no_grad():
+            output_ids = self.generator.generate(
+                input_ids=inputs.input_ids,
+                attention_mask=inputs.attention_mask,
+                max_new_tokens=2048,
+                do_sample=True,
+                temperature=0.6,
+                top_p=0.9,
+                pad_token_id=self.tokenizer.pad_token_id,
+                bos_token_id=self.tokenizer.bos_token_id,
+                eos_token_id=self.tokenizer.convert_tokens_to_ids("<｜end▁of▁sentence｜>"),
+            )
+        response = self.tokenizer.decode(output_ids.tolist()[0][inputs.input_ids.size(1):])
+
+        return str(response)
+
+    def chat_qwen(self, system_prompt, user_prompt):
+        prompt = f"<|im_start|>system\nPlease respond to binary questions. {system_prompt}<|im_end|>\n\n<|im_start|>user\n{user_prompt}<|im_end|>\n\n<|im_start|>assistant"
+        
+        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.generator.device)
+        with torch.no_grad():
+            output_ids = self.generator.generate(
+                input_ids=inputs.input_ids,
+                attention_mask=inputs.attention_mask,
+                max_new_tokens=256,
+                do_sample=True,
+                temperature=0.6,
+                top_p=0.9,
+                pad_token_id=self.tokenizer.pad_token_id,
+                bos_token_id=self.tokenizer.bos_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
+            )
+        response = self.tokenizer.decode(output_ids.tolist()[0][inputs.input_ids.size(1):])
 
         return str(response)
 
