@@ -101,6 +101,7 @@ To specify the model, use the following arguments:
   * 2.5 72B `--model Qwen2.5-72B-Instruct`
 * Deepseek R1
   * Llama-8B `--model DeepSeek-R1-Distill-Llama-8B`
+  * Qwen-1.5B `--model DeepSeek-R1-Distill-Qwen-1.5B`
 
 NOTE: For Llama 2, run as follows:
 ```
