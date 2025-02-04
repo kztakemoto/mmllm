@@ -28,7 +28,7 @@ class ChatBotManager:
             self.chat_model = ChatModel.from_pretrained("chat-bison@001")
 
     def chat(self, system_prompt, user_prompt):
-        if "gpt" in self.model.lower():
+        if "gpt" in self.model.lower() or "o3" in self.model.lower():
             return self.chat_gpt(system_prompt, user_prompt)
         elif "o1" in self.model.lower():
             return self.chat_o1(system_prompt, user_prompt)
