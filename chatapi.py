@@ -122,14 +122,25 @@ class ChatBotManager:
         while attempt < self.max_attempts:
             try:
                 prompt = f"{system_prompt}\n\n" + user_prompt 
-                response = chat.send_message(
-                        prompt,
-                        generation_config = {
-                            "max_output_tokens": 2048,
-                            "temperature": 0.9,
-                            "top_p": 1
-                        },
-                        )
+                if "1.5" in self.model.lower() or "2.0" in self.model.lower():
+                    response = chat.send_message(
+                            prompt,
+                            generation_config = {
+                                "max_output_tokens": 8192,
+                                "temperature": 1,
+                                "top_p": 0.95,
+                            },
+                            )
+                    time.sleep(15)
+                else:
+                    response = chat.send_message(
+                            prompt,
+                            generation_config = {
+                                "max_output_tokens": 2048,
+                                "temperature": 0.9,
+                                "top_p": 1
+                            },
+                            )
 
                 response_text = response.candidates[0].content.parts[0].text
                 
