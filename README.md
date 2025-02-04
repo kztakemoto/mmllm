@@ -43,6 +43,7 @@ To specify the model, use the following arguments:
   * GPT-4o-mini: `--model gpt-4o-mini-2024-07-18` (July 2024 version)
   * o1: `--model o1-preview-2024-09-12` (September 2024 version)
   * o1-mini: `--model o1-mini-2024-09-12` (September 2024 version)
+  * o3-mini: `--model o3-mini-2025-01-31` (January 2025 version)
 * PaLM 2: `--model palm2`
 * Gemini:
   * 1.0 Pro: `--model gemini-1.0-pro-001`
@@ -90,6 +91,16 @@ To specify the model, use the following arguments:
   *  3.5 MoE-instruct: `--model Phi-3.5-MoE-instruct`
   *  3.5 mini-instruct: `--model Phi-3.5-mini-instruct`
   *  4 `--model phi-4`
+* Qwen
+  * 2.5 0.5B `--model Qwen2.5-0.5B-Instruct`
+  * 2.5 1.5B `--model Qwen2.5-1.5B-Instruct`
+  * 2.5 3B `--model Qwen2.5-3B-Instruct`
+  * 2.5 7B `--model Qwen2.5-7B-Instruct`
+  * 2.5 14B `--model Qwen2.5-14B-Instruct`
+  * 2.5 32B `--model Qwen2.5-32B-Instruct`
+  * 2.5 72B `--model Qwen2.5-72B-Instruct`
+* Deepseek R1
+  * Llama-8B `--model DeepSeek-R1-Distill-Llama-8B`
 
 NOTE: For Llama 2, run as follows:
 ```
