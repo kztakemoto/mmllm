@@ -1,6 +1,7 @@
 openai==1.61.1
 anthropic==0.19.1
 google-cloud-aiplatform==1.49.0
+google-generativeai==0.8.4
 fairscale==0.4.13
 sentencepiece==0.2.0
 transformers==4.47.1
