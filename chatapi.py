@@ -131,7 +131,7 @@ class ChatBotManager:
         while attempt < self.max_attempts:
             try:
                 prompt = f"{system_prompt}\n\n" + user_prompt 
-                if "1.5" in self.model.lower() or "2.0" in self.model.lower():
+                if "1.5" in self.model.lower():
                     response = chat.send_message(
                             prompt,
                             generation_config = {
