@@ -4,15 +4,8 @@ import vertexai
 from vertexai.generative_models import GenerativeModel
 from vertexai.preview.language_models import ChatModel
 
-# for ChatGPT
 import openai
-openai.api_key = "ENTER YOUR OPENAI API KEY"
-
-# for Claude
 import anthropic
-client = anthropic.Anthropic(
-            api_key="ENTER YOUR ANTHROPIC API KEY",
-        )
 
 # for PaLM and Gemini
 vertexai.init(project="ENTER YOUR PROJECT NAME", location="ENTER YOUR LOCATION")
@@ -26,6 +19,12 @@ class ChatBotManager:
             self.chat_model = GenerativeModel(self.model)
         elif "palm" in self.model.lower():
             self.chat_model = ChatModel.from_pretrained("chat-bison@001")
+        elif any(s.lower() in self.model.lower() for s in ["gpt", "o1", "o3"]):
+            self.chat_model =openai.OpenAI(api_key="ENTER YOUR OPENAI API KEY")
+        elif "claude" in self.model.lower():
+            self.chat_model = anthropic.Anthropic(api_key="ENTER YOUR ANTHROPIC API KEY")
+        elif any(s.lower() in self.model.lower() for s in ["deepseek-chat", "deepseek-reasoner"]):
+            self.chat_model =openai.OpenAI(api_key="ENTER YOUR DEEPSEEK API KEY", base_url="https://api.deepseek.com")
 
     def chat(self, system_prompt, user_prompt):
         if "gpt" in self.model.lower() or "o3" in self.model.lower():
@@ -38,23 +37,25 @@ class ChatBotManager:
             return self.chat_palm(system_prompt, user_prompt)
         elif "claude" in self.model.lower():
             return self.chat_claude(system_prompt, user_prompt)
+        elif "deepseek" in self.model.lower():
+            return self.chat_gpt(system_prompt, user_prompt)
 
     def chat_gpt(self, system_prompt, user_prompt):
         attempt = 0
         while attempt < self.max_attempts:
             try:
-                response = openai.ChatCompletion.create(
+                response = self.chat_model.chat.completions.create(
                     model=self.model,
                     messages = [
                             {"role": "system", "content": system_prompt},
                             {"role": "user", "content": user_prompt}
                         ],
                 )
-                response_text = response['choices'][0]['message']['content']
+                response_text = response.choices[0].message.content
                 
                 return response_text
 
-            except openai.error.OpenAIError as e:
+            except openai.PermissionDeniedError as e:
                 time.sleep(5)
                 attempt = attempt + 1
         
@@ -64,17 +65,17 @@ class ChatBotManager:
         attempt = 0
         while attempt < self.max_attempts:
             try:
-                response = openai.ChatCompletion.create(
+                response = self.chat_model.chat.completions.create(
                     model=self.model,
                     messages = [
                             {"role": "user", "content": f"{system_prompt}\n\n{user_prompt}"}
                         ],
                 )
-                response_text = response['choices'][0]['message']['content']
+                response_text = response.choices[0].message.content
                 
                 return response_text
 
-            except openai.error.OpenAIError as e:
+            except openai.PermissionDeniedError as e:
                 time.sleep(5)
                 attempt = attempt + 1
         
@@ -85,7 +86,7 @@ class ChatBotManager:
         while attempt < self.max_attempts:
             try:
                 time.sleep(1)
-                response = client.messages.create(
+                response = self.chat_model.messages.create(
                     model=self.model,
                     max_tokens=1000,
                     temperature=0,
