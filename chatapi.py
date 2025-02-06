@@ -25,11 +25,11 @@ class ChatBotManager:
         elif "palm" in self.model.lower():
             self.chat_model = ChatModel.from_pretrained("chat-bison@001")
         elif any(s.lower() in self.model.lower() for s in ["gpt", "o1", "o3"]):
-            self.chat_model =openai.OpenAI(api_key="ENTER YOUR OPENAI API KEY")
+            self.chat_model = openai.OpenAI(api_key="ENTER YOUR OPENAI API KEY")
         elif "claude" in self.model.lower():
             self.chat_model = anthropic.Anthropic(api_key="ENTER YOUR ANTHROPIC API KEY")
         elif "deepseek" in self.model.lower():
-            self.chat_model =openai.OpenAI(api_key="ENTER YOUR DEEPSEEK API KEY", base_url="https://api.deepseek.com")
+            self.chat_model = openai.OpenAI(api_key="ENTER YOUR DEEPSEEK API KEY", base_url="https://api.deepseek.com")
 
     def chat(self, system_prompt, user_prompt):
         if "gpt" in self.model.lower() or "o3" in self.model.lower():
