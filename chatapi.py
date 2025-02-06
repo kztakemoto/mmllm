@@ -55,7 +55,7 @@ class ChatBotManager:
                 
                 return response_text
 
-            except openai.PermissionDeniedError as e:
+            except Exception as e:
                 time.sleep(5)
                 attempt = attempt + 1
         
@@ -75,7 +75,7 @@ class ChatBotManager:
                 
                 return response_text
 
-            except openai.PermissionDeniedError as e:
+            except Exception as e:
                 time.sleep(5)
                 attempt = attempt + 1
         
