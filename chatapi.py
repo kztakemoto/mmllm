@@ -23,7 +23,7 @@ class ChatBotManager:
             self.chat_model =openai.OpenAI(api_key="ENTER YOUR OPENAI API KEY")
         elif "claude" in self.model.lower():
             self.chat_model = anthropic.Anthropic(api_key="ENTER YOUR ANTHROPIC API KEY")
-        elif any(s.lower() in self.model.lower() for s in ["deepseek-chat", "deepseek-reasoner"]):
+        elif "deepseek" in self.model.lower():
             self.chat_model =openai.OpenAI(api_key="ENTER YOUR DEEPSEEK API KEY", base_url="https://api.deepseek.com")
 
     def chat(self, system_prompt, user_prompt):
