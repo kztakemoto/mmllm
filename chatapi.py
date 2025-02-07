@@ -17,11 +17,7 @@ class ChatBotManager:
         self.max_attempts = max_attempts
                 
         if "gemini" in self.model.lower():
-            if "2.0" in self.model.lower():
-                genai.configure(api_key="ENTER YOUR GOOGLE AI STUDIO API KEY")
-                self.chat_model = genai.GenerativeModel(model_name = self.model)
-            else:
-                self.chat_model = GenerativeModel(self.model)
+            self.chat_model = GenerativeModel(self.model)
         elif "palm" in self.model.lower():
             self.chat_model = ChatModel.from_pretrained("chat-bison@001")
         elif any(s.lower() in self.model.lower() for s in ["gpt", "o1", "o3"]):
@@ -131,7 +127,7 @@ class ChatBotManager:
         while attempt < self.max_attempts:
             try:
                 prompt = f"{system_prompt}\n\n" + user_prompt 
-                if "1.5" in self.model.lower():
+                if "1.5" in self.model.lower() or "2.0" in self.model.lower():
                     response = chat.send_message(
                             prompt,
                             generation_config = {
@@ -159,25 +155,6 @@ class ChatBotManager:
                 print(str(e))
                 attempt = attempt + 1
             
-            except Exception as e:
-                print(str(e))
-                time.sleep(5)
-                attempt = attempt + 1
-        
-        return None
-
-    def chat_gemini2(self, system_prompt, user_prompt):
-        attempt = 0
-        while attempt < self.max_attempts:
-            try:
-                prompt = f"{system_prompt}\n\n" + user_prompt 
-                response = self.chat_model.generate_content(
-                    prompt,
-                )
-                time.sleep(6)
-
-                return response.text
-
             except Exception as e:
                 print(str(e))
                 time.sleep(5)
