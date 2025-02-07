@@ -56,6 +56,10 @@ To specify the model, use the following arguments:
     * `--model gemini-1.5-flash-preview-0514` (Preview version)
     * `--model gemini-1.5-flash-001`
     * `--model gemini-1.5-flash-002`
+  * 2.0 Flash:
+    * `--model gemini-2.0-flash-exp`
+    * `--model gemini-2.0-flash-001`
+  * 2.0 Flash Lite: `--model gemini-2.0-flash-lite-preview-02-05`
 * Claude:
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
