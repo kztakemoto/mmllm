@@ -60,6 +60,7 @@ To specify the model, use the following arguments:
     * `--model gemini-2.0-flash-exp`
     * `--model gemini-2.0-flash-001`
   * 2.0 Flash Lite: `--model gemini-2.0-flash-lite-preview-02-05`
+  * 2.0 Flash Thinking: `--model gemini-2.0-flash-thinking-exp-01-21`
 * Claude:
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
@@ -106,6 +107,8 @@ To specify the model, use the following arguments:
 * Deepseek R1
   * Llama-8B `--model DeepSeek-R1-Distill-Llama-8B`
   * Qwen-1.5B `--model DeepSeek-R1-Distill-Qwen-1.5B`
+  * Qwen-7B `--model DeepSeek-R1-Distill-Qwen-7B`
+  * Qwen-14B `--model DeepSeek-R1-Distill-Qwen-14B`
 
 NOTE: For Llama 2, run as follows:
 ```
