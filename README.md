@@ -105,12 +105,12 @@ To specify the model, use the following arguments:
   * 2.5 14B `--model Qwen2.5-14B-Instruct`
   * 2.5 32B `--model Qwen2.5-32B-Instruct`
   * 2.5 72B `--model Qwen2.5-72B-Instruct`
-* Deepseek R1
-  * Llama-8B `--model DeepSeek-R1-Distill-Llama-8B`
-  * Qwen-1.5B `--model DeepSeek-R1-Distill-Qwen-1.5B`
-  * Qwen-7B `--model DeepSeek-R1-Distill-Qwen-7B`
-  * Qwen-14B `--model DeepSeek-R1-Distill-Qwen-14B`
-  * Qwen-32B `--model DeepSeek-R1-Distill-Qwen-32B`
+* Deepseek
+  * R1-Llama-8B `--model DeepSeek-R1-Distill-Llama-8B`
+  * R1-Qwen-1.5B `--model DeepSeek-R1-Distill-Qwen-1.5B`
+  * R1-Qwen-7B `--model DeepSeek-R1-Distill-Qwen-7B`
+  * R1-Qwen-14B `--model DeepSeek-R1-Distill-Qwen-14B`
+  * R1-Qwen-32B `--model DeepSeek-R1-Distill-Qwen-32B`
 
 NOTE: For Llama 2, run as follows:
 ```
