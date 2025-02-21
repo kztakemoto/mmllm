@@ -10,4 +10,5 @@ flash-attn==2.6.3
 bitsandbytes==0.43.1
 protobuf==5.26.1
 pandas==2.0.1
+requests==2.29.0
 tqdm==4.64.1
