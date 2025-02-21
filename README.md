@@ -14,7 +14,7 @@ MIT licensed. Happy if you cite our papers when utilizing the codes:
 ```
 pip install -r requirements.txt
 ```
-**NOTE:** To run the script `run.py`, an OpenAI API key for ChatGPT (GPT-3.5 and GPT-4) and Anthropic API key for Claude 3 are required. Please obtain your API key by following [OpenAI's instructions](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key), [Anthropic's instructions](https://support.anthropic.com/en/articles/8114521-how-can-i-access-the-claude-api), and [DeepSeek's instructions](https://api-docs.deepseek.com/api/deepseek-api). For PaLM 2 and Gemini, setup is required. Please refer to [the Google Cloud instructions](https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal). The API keys and Google Cloud information must be specified in the `chatapi.py` file. The Llama 2 model files must be downloaded. Please follow the instructions on [Llama2](https://github.com/facebookresearch/llama) provided by Meta to download the files. The files should be placed in the same directory for proper execution.
+**NOTE:** To run the script `run.py`, an OpenAI API key for ChatGPT (GPT-3.5 and GPT-4) and Anthropic API key for Claude 3 are required. Please obtain your API key by following [OpenAI's instructions](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key), [Anthropic's instructions](https://support.anthropic.com/en/articles/8114521-how-can-i-access-the-claude-api), [DeepSeek's instructions](https://api-docs.deepseek.com/api/deepseek-api), and [xAI's instructions](https://docs.x.ai/docs/overview). For PaLM 2 and Gemini, setup is required. Please refer to [the Google Cloud instructions](https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal). The API keys and Google Cloud information must be specified in the `chatapi.py` file. The Llama 2 model files must be downloaded. Please follow the instructions on [Llama2](https://github.com/facebookresearch/llama) provided by Meta to download the files. The files should be placed in the same directory for proper execution.
 
 * R (ver. 4.4.1)
 * see also the headers of `figure1.R` and `figure2.R`
@@ -113,6 +113,8 @@ To specify the model, use the following arguments:
   * R1-Qwen-7B `--model DeepSeek-R1-Distill-Qwen-7B`
   * R1-Qwen-14B `--model DeepSeek-R1-Distill-Qwen-14B`
   * R1-Qwen-32B `--model DeepSeek-R1-Distill-Qwen-32B`
+* Grok
+  * 2: `--model grok-2-1212`  
 
 NOTE: For Llama 2, run as follows:
 ```
