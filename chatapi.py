@@ -8,6 +8,8 @@ import google.generativeai as genai
 import openai
 import anthropic
 
+import requests
+
 # for PaLM and Gemini
 vertexai.init(project="ENTER YOUR PROJECT NAME", location="ENTER YOUR LOCATION")
 
@@ -26,6 +28,8 @@ class ChatBotManager:
             self.chat_model = anthropic.Anthropic(api_key="ENTER YOUR ANTHROPIC API KEY")
         elif "deepseek" in self.model.lower():
             self.chat_model = openai.OpenAI(api_key="ENTER YOUR DEEPSEEK API KEY", base_url="https://api.deepseek.com")
+        elif "grok" in self.model.lower():
+            self.chat_model = "grok"
 
     def chat(self, system_prompt, user_prompt):
         if "gpt" in self.model.lower() or "o3" in self.model.lower():
@@ -43,6 +47,8 @@ class ChatBotManager:
             return self.chat_claude(system_prompt, user_prompt)
         elif "deepseek" in self.model.lower():
             return self.chat_gpt(system_prompt, user_prompt)
+        elif "grok" in self.model.lower():
+            return self.chat_xai(system_prompt, user_prompt)
 
     def chat_gpt(self, system_prompt, user_prompt):
         attempt = 0
@@ -184,6 +190,40 @@ class ChatBotManager:
             
             except Exception as e:
                 print(str(e))
+                time.sleep(5)
+                attempt = attempt + 1
+        
+        return None
+        
+    def chat_xai(self, system_prompt, user_prompt):
+        attempt = 0
+        while attempt < self.max_attempts:
+            try:
+                response = requests.post(
+                    "https://api.x.ai/v1/chat/completions",
+                    headers={
+                        "Content-Type": "application/json",
+                        "Authorization": f"Bearer ENTER-YOUT-GROK-API-KEY"
+                    },
+                    json={
+                        "messages": [
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": user_prompt}
+                        ],
+                        "model": self.model,
+                        "stream": False,
+                        "temperature": 0
+                    }
+                )
+                response.raise_for_status()
+                result = response.json()
+                response_text = result['choices'][0]['message']['content']
+
+                time.sleep(5)
+                
+                return response_text
+
+            except Exception as e:
                 time.sleep(5)
                 attempt = attempt + 1
         
