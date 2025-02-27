@@ -95,25 +95,72 @@ class ChatBotManager:
         attempt = 0
         while attempt < self.max_attempts:
             try:
+                try:
                 time.sleep(1)
-                response = self.chat_model.messages.create(
-                    model=self.model,
-                    max_tokens=1000,
-                    temperature=0,
-                    system=system_prompt,
-                    messages=[
-                        {
-                            "role": "user",
-                            "content": [
+                if "3-7" in self.model.lower():
+                    if "thinking" in self.model.lower():
+                        response = self.chat_model.messages.create(
+                            model=self.model,
+                            max_tokens=20000,
+                            temperature=1,
+                            system=system_prompt,
+                            messages=[
                                 {
-                                    "type": "text",
-                                    "text": user_prompt
+                                    "role": "user",
+                                    "content": [
+                                        {
+                                            "type": "text",
+                                            "text": user_prompt
+                                        }
+                                    ]
+                                }
+                            ],
+                            thinking={
+                                "type": "enabled",
+                                "budget_tokens": 16000
+                            }
+                        )
+                        response_text = "<think>" + response.content[0].thinking + "</think>" + response.content[1].text
+
+                    else:
+                        response = self.chat_model.messages.create(
+                            model=self.model,
+                            max_tokens=20000,
+                            temperature=1,
+                            system=system_prompt,
+                            messages=[
+                                {
+                                    "role": "user",
+                                    "content": [
+                                        {
+                                            "type": "text",
+                                            "text": user_prompt
+                                        }
+                                    ]
                                 }
                             ]
-                        }
-                    ]
-                )
-                response_text = response.content[0].text
+                        )
+                        response_text = response.content[0].text
+
+                else:
+                    response = self.chat_model.messages.create(
+                        model=self.model,
+                        max_tokens=1000,
+                        temperature=0,
+                        system=system_prompt,
+                        messages=[
+                            {
+                                "role": "user",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": user_prompt
+                                    }
+                                ]
+                            }
+                        ]
+                    )
+                    response_text = response.content[0].text
                 
                 return response_text
 
