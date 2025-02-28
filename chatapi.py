@@ -100,7 +100,7 @@ class ChatBotManager:
                 if "3-7" in self.model.lower():
                     if "thinking" in self.model.lower():
                         response = self.chat_model.messages.create(
-                            model=self.model,
+                            model=self.model.split("_")[0],
                             max_tokens=20000,
                             temperature=1,
                             system=system_prompt,
