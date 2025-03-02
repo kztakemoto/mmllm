@@ -110,6 +110,7 @@ To specify the model, use the following arguments:
   * 2.5 72B `--model Qwen2.5-72B-Instruct`
 * Deepseek
   * V3 `--model deepseek-chat`
+  * R1 `--model deepseek-reasoner`
   * R1-Llama-8B `--model DeepSeek-R1-Distill-Llama-8B`
   * R1-Llama-70B `--model DeepSeek-R1-Distill-Llama-70B`
   * R1-Qwen-1.5B `--model DeepSeek-R1-Distill-Qwen-1.5B`
