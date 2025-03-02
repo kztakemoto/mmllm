@@ -27,17 +27,17 @@ python run.py --model gpt-3.5-turbo-0613 --nb_scenarios 50000
 ```
 To specify the model, use the following arguments:
 * OpenAI
-  * GPT-3.5:
+  * GPT-3.5
     * `--model gpt-3.5-turbo-0301` (March 2023 version; no longer be available on September 13, 2024)
     * `--model gpt-3.5-turbo-1106` (November 2023 version)
     * `--model gpt-3.5-turbo-0125` (January 2024 version)
-  * GPT-4:
+  * GPT-4
     * `--model gpt-4-0314` (March 2023 version)
     * `--model gpt-4-0613` (June 2023 version)
     * `--model gpt-4-1106-preview` (November 2023 version)
     * `--model gpt-4-0125-preview` (January 2024 version)
     * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
-  * GPT-4o:
+  * GPT-4o
     * `--model gpt-4o-2024-05-13` (May 2024 version)
     * `--model gpt-4o-2024-08-06` (August 2024 version) 
   * GPT-4o-mini: `--model gpt-4o-mini-2024-07-18` (July 2024 version)
@@ -46,7 +46,7 @@ To specify the model, use the following arguments:
   * o1-mini: `--model o1-mini-2024-09-12` (September 2024 version)
   * o3-mini: `--model o3-mini-2025-01-31` (January 2025 version)
 * PaLM 2: `--model palm2`
-* Gemini:
+* Gemini
   * 1.0 Pro: `--model gemini-1.0-pro-001`
   * 1.5 Pro:
     * `--model gemini-1.5-pro-preview-0409` (April 2024 preview version)
@@ -63,7 +63,7 @@ To specify the model, use the following arguments:
   * 2.0 Flash Lite: `--model gemini-2.0-flash-lite-preview-02-05`
   * 2.0 Flash Thinking: `--model gemini-2.0-flash-thinking-exp-01-21`
   * 2.0 Pro: `--model gemini-2.0-pro-exp-02-05`
-* Claude:
+* Claude
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
   * 3 Opus: `--model claude-3-opus-20240229`
@@ -72,7 +72,7 @@ To specify the model, use the following arguments:
   * 3.5 Haiku: `--model claude-3-5-haiku-20241022`
   * 3.7 Sonnet: `--model claude-3-7-sonnet-20250219`
   * 3.7 Sonnet with Extended thinking: `--model claude-3-7-sonnet-20250219_thinking`
-* Llama:
+* Llama
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
   * 3 70B Instruct: `--model Meta-Llama-3-70B-Instruct`
@@ -81,42 +81,42 @@ To specify the model, use the following arguments:
   * 3.2 1B Instruct: `--model Llama-3.2-1B-Instruct`
   * 3.2 3B Instruct: `--model Llama-3.2-3B-Instruct`
   * 3.3 70B Instruct: `--model Meta-Llama-3.3-70B-Instruct`
-* Vicuna:
-  * 7B `--model vicuna-7b-v1.5`
-  * 13B `--model vicuna-13b-v1.5` 
+* Vicuna
+  * 7B: `--model vicuna-7b-v1.5`
+  * 13B: `--model vicuna-13b-v1.5` 
 * Mistral: `--model Mistral-7B-Instruct-v0.2`
 * Mistral-NeMo: `--model Mistral-Nemo-Instruct-2407`
-* Gemma:
+* Gemma
   * 2B-it: `--model gemma-2b-it`
   * 7B-it: `--model gemma-7b-it`
-  * 1.1-2B-it`: --model gemma-1.1-2b-it`
+  * 1.1-2B-it: `--model gemma-1.1-2b-it`
   * 1.1-7B-it: `--model gemma-1.1-7b-it`
   * 2-2b-it: `--model gemma-2-2b-it`
   * 2-9B-it: `--model gemma-2-9b-it`
   * 2-27B-it: `--model gemma-2-27b-it`
   * DataGemma RIG 27B: `--model datagemma-rig-27b-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
-* Phi:
+* Phi
   *  3.5 MoE-instruct: `--model Phi-3.5-MoE-instruct`
   *  3.5 mini-instruct: `--model Phi-3.5-mini-instruct`
-  *  4 `--model phi-4`
+  *  4: `--model phi-4`
 * Qwen
-  * 2.5 0.5B `--model Qwen2.5-0.5B-Instruct`
-  * 2.5 1.5B `--model Qwen2.5-1.5B-Instruct`
-  * 2.5 3B `--model Qwen2.5-3B-Instruct`
-  * 2.5 7B `--model Qwen2.5-7B-Instruct`
-  * 2.5 14B `--model Qwen2.5-14B-Instruct`
-  * 2.5 32B `--model Qwen2.5-32B-Instruct`
-  * 2.5 72B `--model Qwen2.5-72B-Instruct`
+  * 2.5 0.5B: `--model Qwen2.5-0.5B-Instruct`
+  * 2.5 1.5B: `--model Qwen2.5-1.5B-Instruct`
+  * 2.5 3B: `--model Qwen2.5-3B-Instruct`
+  * 2.5 7B: `--model Qwen2.5-7B-Instruct`
+  * 2.5 14B: `--model Qwen2.5-14B-Instruct`
+  * 2.5 32B: `--model Qwen2.5-32B-Instruct`
+  * 2.5 72B: `--model Qwen2.5-72B-Instruct`
 * Deepseek
-  * V3 `--model deepseek-chat`
-  * R1 `--model deepseek-reasoner`
-  * R1-Llama-8B `--model DeepSeek-R1-Distill-Llama-8B`
-  * R1-Llama-70B `--model DeepSeek-R1-Distill-Llama-70B`
-  * R1-Qwen-1.5B `--model DeepSeek-R1-Distill-Qwen-1.5B`
-  * R1-Qwen-7B `--model DeepSeek-R1-Distill-Qwen-7B`
-  * R1-Qwen-14B `--model DeepSeek-R1-Distill-Qwen-14B`
-  * R1-Qwen-32B `--model DeepSeek-R1-Distill-Qwen-32B`
+  * V3: `--model deepseek-chat`
+  * R1: `--model deepseek-reasoner`
+  * R1-Llama-8B: `--model DeepSeek-R1-Distill-Llama-8B`
+  * R1-Llama-70B: `--model DeepSeek-R1-Distill-Llama-70B`
+  * R1-Qwen-1.5B: `--model DeepSeek-R1-Distill-Qwen-1.5B`
+  * R1-Qwen-7B: `--model DeepSeek-R1-Distill-Qwen-7B`
+  * R1-Qwen-14B: `--model DeepSeek-R1-Distill-Qwen-14B`
+  * R1-Qwen-32B: `--model DeepSeek-R1-Distill-Qwen-32B`
 * Grok
   * 2: `--model grok-2-1212`  
 
