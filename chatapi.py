@@ -61,7 +61,11 @@ class ChatBotManager:
                             {"role": "user", "content": user_prompt}
                         ],
                 )
-                response_text = response.choices[0].message.content
+                if "deepseek-reasoner" in self.model.lower():
+                    response_text = "<think>" + response.choices[0].message.reasoning_content + "</think>" + response.choices[0].message.content
+                    time.sleep(35)
+                else:
+                    response_text = response.choices[0].message.content
                 
                 return response_text
 
