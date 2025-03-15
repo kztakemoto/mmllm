@@ -4,7 +4,7 @@ google-cloud-aiplatform==1.49.0
 google-generativeai==0.8.4
 fairscale==0.4.13
 sentencepiece==0.2.0
-transformers==4.47.1
+transformers==4.50.0.dev0
 accelerate==0.31.0
 flash-attn==2.6.3
 bitsandbytes==0.43.1
