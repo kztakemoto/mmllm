@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, Gemma3ForConditionalGeneration
 
 class ChatModel:
     def __init__(self, model):
@@ -84,11 +84,19 @@ class ChatModel:
                 use_fast=False,
             )
 
-            self.generator = AutoModelForCausalLM.from_pretrained(
-                "google/{}".format(self.model),
-                torch_dtype=torch.bfloat16,
-                device_map="auto",
-            )
+            if "gemma-3" in self.model.lower():
+                self.generator = Gemma3ForConditionalGeneration.from_pretrained(
+                    "google/{}".format(self.model),
+                    torch_dtype=torch.bfloat16,
+                    device_map="auto",
+                )
+            else:
+                self.generator = AutoModelForCausalLM.from_pretrained(
+                    "google/{}".format(self.model),
+                    torch_dtype=torch.bfloat16,
+                    device_map="auto",
+                )
+                
         elif "mistral" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "mistralai/{}".format(self.model),
