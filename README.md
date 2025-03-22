@@ -112,6 +112,7 @@ To specify the model, use the following arguments:
   * 2.5 14B: `--model Qwen2.5-14B-Instruct`
   * 2.5 32B: `--model Qwen2.5-32B-Instruct`
   * 2.5 72B: `--model Qwen2.5-72B-Instruct`
+* QwQ 32B: `--model QwQ-32B`
 * Deepseek
   * V3: `--model deepseek-chat`
   * R1: `--model deepseek-reasoner`
