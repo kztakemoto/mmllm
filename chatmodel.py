@@ -16,7 +16,7 @@ class ChatModel:
                 device_map="auto",
             )
         
-        elif "qwen" in self.model.lower():
+        elif "qwen" in self.model.lower() or "qwq" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "Qwen/{}".format(self.model),
             )
@@ -148,7 +148,7 @@ class ChatModel:
     def chat(self, system_prompt, user_prompt):
         if "deepseek" in self.model.lower():
             return self.chat_deepseek(system_prompt, user_prompt)
-        elif "qwen" in self.model.lower():
+        elif "qwen" in self.model.lower() or "qwq" in self.model.lower():
             return self.chat_qwen(system_prompt, user_prompt)
         elif "llama" in self.model.lower():
             if "llama-3" in self.model.lower():
@@ -229,7 +229,7 @@ class ChatModel:
             output_ids = self.generator.generate(
                 input_ids=inputs.input_ids,
                 attention_mask=inputs.attention_mask,
-                max_new_tokens=256,
+                max_new_tokens=2048,
                 do_sample=True,
                 temperature=0.6,
                 top_p=0.9,
