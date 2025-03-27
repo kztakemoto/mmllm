@@ -104,6 +104,7 @@ To specify the model, use the following arguments:
   *  3.5 MoE-instruct: `--model Phi-3.5-MoE-instruct`
   *  3.5 mini-instruct: `--model Phi-3.5-mini-instruct`
   *  4: `--model phi-4`
+  *  4 mini-instruct: `--model Phi-4-mini-instruct`
 * Qwen
   * 2.5 0.5B: `--model Qwen2.5-0.5B-Instruct`
   * 2.5 1.5B: `--model Qwen2.5-1.5B-Instruct`
