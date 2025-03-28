@@ -39,7 +39,8 @@ To specify the model, use the following arguments:
     * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
   * GPT-4o
     * `--model gpt-4o-2024-05-13` (May 2024 version)
-    * `--model gpt-4o-2024-08-06` (August 2024 version) 
+    * `--model gpt-4o-2024-08-06` (August 2024 version)
+    * `--model gpt-4o-2024-11-20` (November 2024 version)
   * GPT-4o-mini: `--model gpt-4o-mini-2024-07-18` (July 2024 version)
   * GPT-4.5: `--model gpt-4.5-preview-2025-02-27`
   * o1: `--model o1-preview-2024-09-12` (September 2024 version)
