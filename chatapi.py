@@ -37,10 +37,7 @@ class ChatBotManager:
         elif "o1" in self.model.lower():
             return self.chat_o1(system_prompt, user_prompt)
         elif "gemini" in self.model.lower():
-            if "2.0" in self.model.lower():
-                return self.chat_gemini2(system_prompt, user_prompt)
-            else:
-                return self.chat_gemini(system_prompt, user_prompt)
+            return self.chat_gemini(system_prompt, user_prompt)
         elif "palm" in self.model.lower():
             return self.chat_palm(system_prompt, user_prompt)
         elif "claude" in self.model.lower():
@@ -194,6 +191,18 @@ class ChatBotManager:
                             },
                             )
                     time.sleep(15)
+
+                elif "2.5" in self.model.lower():
+                    response = chat.send_message(
+                            prompt,
+                            generation_config = {
+                                "max_output_tokens": 65535,
+                                "temperature": 1,
+                                "top_p": 1,
+                            },
+                            )
+                    time.sleep(15)
+                    
                 else:
                     response = chat.send_message(
                             prompt,
