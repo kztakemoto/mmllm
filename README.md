@@ -1,13 +1,13 @@
 # mmllm
 
-This repository contains data and code used in [*the moral machine experiment on large language models*](https://doi.org/10.1098/rsos.231393).
+This repository contains data and code used in the Moral Machine experiment on large language models.
 
 ## Terms of use
 
-MIT licensed. Happy if you cite our papers when utilizing the codes:
+This project is MIT licensed. If you use this code in your research, please cite our papers:
 
-+ Takemoto K (2024) **The Moral Machine Experiment on Large Language Models.** R. Soc. Open Sci. 11, 231393.
-+ Ahmad MSZ and Takemoto K (2024) **Large-Scale Moral Machine Experiment on Large Language Models.** arXiv:2411.06790.
++ Takemoto K (2024) **The Moral Machine Experiment on Large Language Models.** R. Soc. Open Sci. 11, 231393. https://doi.org/10.1098/rsos.231393
++ Ahmad MSZ and Takemoto K (2024) **Large-Scale Moral Machine Experiment on Large Language Models.** arXiv:2411.06790. https://doi.org/10.48550/arXiv.2411.06790
 
 ## Requirements
 * Python 3.11 and PyTorch (v2.3.1; for the open-source LLMs such as Llama)
@@ -27,25 +27,30 @@ python run.py --model gpt-3.5-turbo-0613 --nb_scenarios 50000
 ```
 To specify the model, use the following arguments:
 * OpenAI
-  * GPT-3.5
+  * GPT-3.5:
     * `--model gpt-3.5-turbo-0301` (March 2023 version; no longer be available on September 13, 2024)
     * `--model gpt-3.5-turbo-1106` (November 2023 version)
     * `--model gpt-3.5-turbo-0125` (January 2024 version)
-  * GPT-4
+  * GPT-4:
     * `--model gpt-4-0314` (March 2023 version)
     * `--model gpt-4-0613` (June 2023 version)
     * `--model gpt-4-1106-preview` (November 2023 version)
     * `--model gpt-4-0125-preview` (January 2024 version)
     * `--model gpt-4-turbo-2024-04-09` (April 2024 version)
-  * GPT-4o
+  * GPT-4o:
     * `--model gpt-4o-2024-05-13` (May 2024 version)
     * `--model gpt-4o-2024-08-06` (August 2024 version)
     * `--model gpt-4o-2024-11-20` (November 2024 version)
-  * GPT-4o-mini: `--model gpt-4o-mini-2024-07-18` (July 2024 version)
+  * GPT-4o-mini: `--model gpt-4o-mini-2024-07-18`
+  * GPT-4.1: `--model gpt-4.1-2025-04-14`
+  * GPT-4.1-mini: `--model gpt-4.1-mini-2025-04-14`
+  * GPT-4.1-nano: `--model gpt-4.1-nano-2025-04-14`
   * GPT-4.5: `--model gpt-4.5-preview-2025-02-27`
-  * o1: `--model o1-preview-2024-09-12` (September 2024 version)
-  * o1-mini: `--model o1-mini-2024-09-12` (September 2024 version)
-  * o3-mini: `--model o3-mini-2025-01-31` (January 2025 version)
+  * o1:
+    * `--model o1-preview-2024-09-12` (September 2024 version)
+    * `--model o1-2024-12-17` (December 2024 version)
+  * o1-mini: `--model o1-mini-2024-09-12`
+  * o3-mini: `--model o3-mini-2025-01-31`
 * PaLM 2: `--model palm2`
 * Gemini
   * 1.0 Pro: `--model gemini-1.0-pro-001`
@@ -64,7 +69,9 @@ To specify the model, use the following arguments:
   * 2.0 Flash Lite: `--model gemini-2.0-flash-lite-preview-02-05`
   * 2.0 Flash Thinking: `--model gemini-2.0-flash-thinking-exp-01-21`
   * 2.0 Pro: `--model gemini-2.0-pro-exp-02-05`
-  * 2.5 Pro: `--model gemini-2.5-pro-exp-03-25`
+  * 2.5 Pro:
+    * `--model gemini-2.5-pro-exp-03-25` (Experimental version)
+    * `--model gemini-2.5-pro-preview-03-25` (Preview version)
 * Claude
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
@@ -126,7 +133,11 @@ To specify the model, use the following arguments:
   * R1-Qwen-14B: `--model DeepSeek-R1-Distill-Qwen-14B`
   * R1-Qwen-32B: `--model DeepSeek-R1-Distill-Qwen-32B`
 * Grok
-  * 2: `--model grok-2-1212`  
+  * 2: `--model grok-2-1212`
+  * 3: `--model grok-3-beta`
+  * 3-fast: `--model grok-3-fast-beta`
+  * 3-mini: `--model grok-3-mini-beta`
+  * 3-mini-fast: `--model grok-3-mini-fast-beta`
 
 NOTE: For Llama 2, run as follows:
 ```
@@ -148,16 +159,16 @@ The column names of the CSV files generated after running `convert_pickle_csv.py
 
 NOTE: All datasets used in this study are available in the `data` directory.
 
-### Conjoint analysis (Figure 1)
-
+### Conjoint analysis
+Figure 1 in [Takemoto (2024)](https://doi.org/10.1098/rsos.231393)
 ```
 Rsctipt figure1.R
 ```
 
 The script `figure1.R` requires `chatbot_MMFunctionsShared.R`, which houses the function for conducting the conjoint analysis. Both files should be placed in the same directory for seamless operation.
 
-### Distance Computation and PCA (Figure 2)
-
+### Distance Computation and PCA
+Figure 2 in [Takemoto (2024)](https://doi.org/10.1098/rsos.231393)
 ```
 Rsctipt figure2.R
 ```
