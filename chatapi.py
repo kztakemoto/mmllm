@@ -22,7 +22,7 @@ class ChatBotManager:
             self.chat_model = GenerativeModel(self.model)
         elif "palm" in self.model.lower():
             self.chat_model = ChatModel.from_pretrained("chat-bison@001")
-        elif any(s.lower() in self.model.lower() for s in ["gpt", "o1", "o3"]):
+        elif any(s.lower() in self.model.lower() for s in ["gpt", "o1", "o3", "o4"]):
             self.chat_model = openai.OpenAI(api_key="ENTER YOUR OPENAI API KEY")
         elif "claude" in self.model.lower():
             self.chat_model = anthropic.Anthropic(api_key="ENTER YOUR ANTHROPIC API KEY")
@@ -32,7 +32,7 @@ class ChatBotManager:
             self.chat_model = "grok"
 
     def chat(self, system_prompt, user_prompt):
-        if "gpt" in self.model.lower() or "o3" in self.model.lower():
+        if any(s.lower() in self.model.lower() for s in ["gpt", "o3", "o4"]):
             return self.chat_gpt(system_prompt, user_prompt)
         elif "o1" in self.model.lower():
             return self.chat_o1(system_prompt, user_prompt)
