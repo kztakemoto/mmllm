@@ -51,6 +51,7 @@ To specify the model, use the following arguments:
     * `--model o1-2024-12-17` (December 2024 version)
   * o1-mini: `--model o1-mini-2024-09-12`
   * o3-mini: `--model o3-mini-2025-01-31`
+  * o3: `--model o3-2025-04-16`
   * o4-mini: `--model o4-mini-2025-04-16`
 * PaLM 2: `--model palm2`
 * Gemini
