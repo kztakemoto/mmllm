@@ -4,7 +4,7 @@ google-cloud-aiplatform==1.49.0
 google-generativeai==0.8.4
 fairscale==0.4.13
 sentencepiece==0.2.0
-transformers==4.50.0.dev0
+transformers==4.51.3
 accelerate==0.31.0
 flash-attn==2.6.3
 bitsandbytes==0.43.1
@@ -12,3 +12,4 @@ protobuf==5.26.1
 pandas==2.0.1
 requests==2.29.0
 tqdm==4.64.1
+numpy==1.24.2
