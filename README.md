@@ -125,6 +125,12 @@ To specify the model, use the following arguments:
   * 2.5 14B: `--model Qwen2.5-14B-Instruct`
   * 2.5 32B: `--model Qwen2.5-32B-Instruct`
   * 2.5 72B: `--model Qwen2.5-72B-Instruct`
+  * 3 0.6B: `--model Qwen3-0.6B`
+  * 3 1.7B: `--model Qwen3-1.7B`
+  * 3 4B: `--model Qwen3-4B`
+  * 3 8B: `--model Qwen3-8B`
+  * 3 14B: `--model Qwen3-14B`
+  * 3 32B: `--model Qwen3-32B`
 * QwQ 32B: `--model QwQ-32B`
 * Deepseek
   * V3: `--model deepseek-chat`
