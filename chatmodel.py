@@ -222,22 +222,58 @@ class ChatModel:
         return str(response)
 
     def chat_qwen(self, system_prompt, user_prompt):
-        prompt = f"<|im_start|>system\nPlease respond to binary questions. {system_prompt}<|im_end|>\n\n<|im_start|>user\n{user_prompt}<|im_end|>\n\n<|im_start|>assistant"
-        
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.generator.device)
-        with torch.no_grad():
-            output_ids = self.generator.generate(
-                input_ids=inputs.input_ids,
-                attention_mask=inputs.attention_mask,
-                max_new_tokens=2048,
-                do_sample=True,
-                temperature=0.6,
-                top_p=0.9,
-                pad_token_id=self.tokenizer.pad_token_id,
-                bos_token_id=self.tokenizer.bos_token_id,
-                eos_token_id=self.tokenizer.eos_token_id,
+        if "qwen3" in self.model.lower():
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ]
+
+            text = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False
+                # enable_thinking=True
             )
-        response = self.tokenizer.decode(output_ids.tolist()[0][inputs.input_ids.size(1):])
+
+            model_inputs = self.tokenizer([text], return_tensors="pt").to(self.generator.device)
+
+            # conduct text completion
+            generated_ids = self.generator.generate(
+                **model_inputs,
+                max_new_tokens=32768
+            )
+            output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist()
+            
+            # parsing thinking content
+            try:
+                # rindex finding 151668 (</think>)
+                index = len(output_ids) - output_ids[::-1].index(151668)
+            except ValueError:
+                index = 0
+
+            thinking_content = self.tokenizer.decode(output_ids[:index], skip_special_tokens=True).strip("\n")
+            content = self.tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
+
+            response = str(thinking_content) + str(content)
+
+        else:
+            prompt = f"<|im_start|>system\nPlease respond to binary questions. {system_prompt}<|im_end|>\n\n<|im_start|>user\n{user_prompt}<|im_end|>\n\n<|im_start|>assistant"
+            
+            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.generator.device)
+            with torch.no_grad():
+                output_ids = self.generator.generate(
+                    input_ids=inputs.input_ids,
+                    attention_mask=inputs.attention_mask,
+                    max_new_tokens=2048,
+                    do_sample=True,
+                    temperature=0.6,
+                    top_p=0.9,
+                    pad_token_id=self.tokenizer.pad_token_id,
+                    bos_token_id=self.tokenizer.bos_token_id,
+                    eos_token_id=self.tokenizer.eos_token_id,
+                )
+            response = self.tokenizer.decode(output_ids.tolist()[0][inputs.input_ids.size(1):])
 
         return str(response)
 
