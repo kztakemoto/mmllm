@@ -92,7 +92,7 @@ To specify the model, use the following arguments:
   * 3.1 70B Instruct: `--model Meta-Llama-3.1-70B-Instruct`
   * 3.2 1B Instruct: `--model Llama-3.2-1B-Instruct`
   * 3.2 3B Instruct: `--model Llama-3.2-3B-Instruct`
-  * 3.3 70B Instruct: `--model Meta-Llama-3.3-70B-Instruct`
+  * 3.3 70B Instruct: `--model Llama-3.3-70B-Instruct`
 * Vicuna
   * 7B: `--model vicuna-7b-v1.5`
   * 13B: `--model vicuna-13b-v1.5` 
