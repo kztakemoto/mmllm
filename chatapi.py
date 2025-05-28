@@ -119,9 +119,29 @@ class ChatBotManager:
                             thinking={
                                 "type": "enabled",
                                 "budget_tokens": 16000
-                            }
+                            },
+                            stream=True,
                         )
-                        response_text = "<think>" + response.content[0].thinking + "</think>" + response.content[1].text
+                        thinking_content = ""
+                        response_content = ""
+
+                        for event in response:
+                            if event.type == "content_block_delta":
+                                delta = event.delta
+                                
+                                # ThinkingDelta case
+                                if hasattr(delta, 'content'):
+                                    thinking_content += delta.content
+                                elif hasattr(delta, 'thinking'):
+                                    thinking_content += delta.thinking
+                                elif hasattr(delta, 'partial_thinking'):
+                                    thinking_content += delta.partial_thinking
+                                
+                                # TextDelta case
+                                elif hasattr(delta, 'text'):
+                                    response_content += delta.text
+
+                        response_text = "<think>" + thinking_content + "</think>" + response_content
 
                     else:
                         response = self.chat_model.messages.create(
