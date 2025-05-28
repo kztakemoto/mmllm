@@ -87,6 +87,7 @@ To specify the model, use the following arguments:
   * 4 Sonnet: `--model claude-sonnet-4-20250514`
   * 4 Sonnet with thinking: `--model claude-sonnet-4-20250514_thinking`
   * 4 Opus: `--model claude-opus-4-20250514`
+  * 4 Opus with thinking: `--model claude-opus-4-20250514_thinking`
 * Llama
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
