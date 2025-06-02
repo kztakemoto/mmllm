@@ -137,8 +137,8 @@ To specify the model, use the following arguments:
   * 3 32B: `--model Qwen3-32B`
 * QwQ 32B: `--model QwQ-32B`
 * Deepseek
-  * V3: `--model deepseek-chat`
-  * R1: `--model deepseek-reasoner`
+  * V3: `--model deepseek-chat` (December 2024 and March 2025 versions)
+  * R1: `--model deepseek-reasoner` (January 2025 and May 2025 versions)
   * R1-Llama-8B: `--model DeepSeek-R1-Distill-Llama-8B`
   * R1-Llama-70B: `--model DeepSeek-R1-Distill-Llama-70B`
   * R1-Qwen-1.5B: `--model DeepSeek-R1-Distill-Qwen-1.5B`
