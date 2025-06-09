@@ -96,7 +96,6 @@ class ChatBotManager:
         attempt = 0
         while attempt < self.max_attempts:
             try:
-                try:
                 time.sleep(1)
                 if "3-7" in self.model.lower() or "4" in self.model.lower():
                     if "thinking" in self.model.lower():
