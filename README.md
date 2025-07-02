@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/60fd49f9-1b5c-4309-9610-5f062f6f8c66)# mmllm
+# mmllm
 
 This repository contains data and code used in the Moral Machine experiment on large language models.
 
