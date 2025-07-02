@@ -1,4 +1,4 @@
-# mmllm
+![image](https://github.com/user-attachments/assets/60fd49f9-1b5c-4309-9610-5f062f6f8c66)# mmllm
 
 This repository contains data and code used in the Moral Machine experiment on large language models.
 
@@ -129,12 +129,12 @@ To specify the model, use the following arguments:
   * 2.5 14B: `--model Qwen2.5-14B-Instruct`
   * 2.5 32B: `--model Qwen2.5-32B-Instruct`
   * 2.5 72B: `--model Qwen2.5-72B-Instruct`
-  * 3 0.6B: `--model Qwen3-0.6B`
-  * 3 1.7B: `--model Qwen3-1.7B`
-  * 3 4B: `--model Qwen3-4B`
-  * 3 8B: `--model Qwen3-8B`
-  * 3 14B: `--model Qwen3-14B`
-  * 3 32B: `--model Qwen3-32B`
+  * 3 0.6B: `--model Qwen3-0.6B`　(both with and without thinking mode)
+  * 3 1.7B: `--model Qwen3-1.7B` (both with and without thinking mode)
+  * 3 4B: `--model Qwen3-4B`　(both with and without thinking mode)
+  * 3 8B: `--model Qwen3-8B`　(both with and without thinking mode)
+  * 3 14B: `--model Qwen3-14B`　(both with and without thinking mode)
+  * 3 32B: `--model Qwen3-32B`　(both with and without thinking mode)
 * QwQ 32B: `--model QwQ-32B`
 * Deepseek
   * V3: `--model deepseek-chat` (December 2024 and March 2025 versions)
@@ -145,6 +145,7 @@ To specify the model, use the following arguments:
   * R1-Qwen-7B: `--model DeepSeek-R1-Distill-Qwen-7B`
   * R1-Qwen-14B: `--model DeepSeek-R1-Distill-Qwen-14B`
   * R1-Qwen-32B: `--model DeepSeek-R1-Distill-Qwen-32B`
+  * R1-0528-Qwen3-8B: `--model DeepSeek-R1-0528-Qwen3-8B`
 * Grok
   * 2: `--model grok-2-1212`
   * 3: `--model grok-3-beta`
