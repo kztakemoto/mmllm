@@ -129,12 +129,12 @@ To specify the model, use the following arguments:
   * 2.5 14B: `--model Qwen2.5-14B-Instruct`
   * 2.5 32B: `--model Qwen2.5-32B-Instruct`
   * 2.5 72B: `--model Qwen2.5-72B-Instruct`
-  * 3 0.6B: `--model Qwen3-0.6B`　(both with and without thinking mode)
+  * 3 0.6B: `--model Qwen3-0.6B` (both with and without thinking mode)
   * 3 1.7B: `--model Qwen3-1.7B` (both with and without thinking mode)
-  * 3 4B: `--model Qwen3-4B`　(both with and without thinking mode)
-  * 3 8B: `--model Qwen3-8B`　(both with and without thinking mode)
-  * 3 14B: `--model Qwen3-14B`　(both with and without thinking mode)
-  * 3 32B: `--model Qwen3-32B`　(both with and without thinking mode)
+  * 3 4B: `--model Qwen3-4B` (both with and without thinking mode)
+  * 3 8B: `--model Qwen3-8B` (both with and without thinking mode)
+  * 3 14B: `--model Qwen3-14B` (both with and without thinking mode)
+  * 3 32B: `--model Qwen3-32B` (both with and without thinking mode)
 * QwQ 32B: `--model QwQ-32B`
 * Deepseek
   * V3: `--model deepseek-chat` (December 2024 and March 2025 versions)
