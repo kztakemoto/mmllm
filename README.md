@@ -84,10 +84,12 @@ To specify the model, use the following arguments:
   * 3.5 Haiku: `--model claude-3-5-haiku-20241022`
   * 3.7 Sonnet: `--model claude-3-7-sonnet-20250219`
   * 3.7 Sonnet with thinking: `--model claude-3-7-sonnet-20250219_thinking`
-  * 4 Sonnet: `--model claude-sonnet-4-20250514`
-  * 4 Sonnet with thinking: `--model claude-sonnet-4-20250514_thinking`
-  * 4 Opus: `--model claude-opus-4-20250514`
-  * 4 Opus with thinking: `--model claude-opus-4-20250514_thinking`
+  * Sonnet 4: `--model claude-sonnet-4-20250514`
+  * Sonnet 4 with thinking: `--model claude-sonnet-4-20250514_thinking`
+  * Opus 4: `--model claude-opus-4-20250514`
+  * Opus 4 with thinking: `--model claude-opus-4-20250514_thinking`
+  * Opus 4.1: `--model claude-opus-4-1-20250805`
+  * Opus 4.1 with thinking: `--model claude-opus-4-1-20250805_thinking`
 * Llama
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
