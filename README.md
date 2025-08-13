@@ -53,6 +53,9 @@ To specify the model, use the following arguments:
   * o3-mini: `--model o3-mini-2025-01-31`
   * o3: `--model o3-2025-04-16`
   * o4-mini: `--model o4-mini-2025-04-16`
+  * GPT-5: `--model gpt-5-2025-08-07`
+  * GPT-5-mini: `--model gpt-5-mini-2025-08-07`
+  * GPT-5-nano: `--model gpt-5-nano-2025-08-07`
 * PaLM 2: `--model palm2`
 * Gemini
   * 1.0 Pro: `--model gemini-1.0-pro-001`
