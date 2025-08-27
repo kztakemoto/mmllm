@@ -120,6 +120,7 @@ To specify the model, use the following arguments:
   * 3-4B-it: `--model gemma-3-4b-it`
   * 3-12B-it: `--model gemma-3-12b-it`
   * 3-27B-it: `--model gemma-3-27b-it`
+  * 3-270M-it: `--model gemma-3-270m-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
 * Phi
   *  3.5 MoE-instruct: `--model Phi-3.5-MoE-instruct`
@@ -144,6 +145,8 @@ To specify the model, use the following arguments:
 * Deepseek
   * V3: `--model deepseek-chat` (December 2024 and March 2025 versions)
   * R1: `--model deepseek-reasoner` (January 2025 and May 2025 versions)
+  * V3.1: `--model deepseek-chat`
+  * V3.1 with thinking: `--model deepseek-reasoner`
   * R1-Llama-8B: `--model DeepSeek-R1-Distill-Llama-8B`
   * R1-Llama-70B: `--model DeepSeek-R1-Distill-Llama-70B`
   * R1-Qwen-1.5B: `--model DeepSeek-R1-Distill-Qwen-1.5B`
