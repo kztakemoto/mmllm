@@ -93,6 +93,8 @@ To specify the model, use the following arguments:
   * Opus 4 with thinking: `--model claude-opus-4-20250514_thinking`
   * Opus 4.1: `--model claude-opus-4-1-20250805`
   * Opus 4.1 with thinking: `--model claude-opus-4-1-20250805_thinking`
+  * Sonnet 4.5: `--model claude-sonnet-4-5-20250929`
+  * Sonnet 4.5 with thinking: `--model claude-sonnet-4-5-20250929_thinking`
 * Llama
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
@@ -147,6 +149,8 @@ To specify the model, use the following arguments:
   * R1: `--model deepseek-reasoner` (January 2025 and May 2025 versions)
   * V3.1: `--model deepseek-chat`
   * V3.1 with thinking: `--model deepseek-reasoner`
+  * V3.2: `--model deepseek-chat`
+  * V3.2 with thinking: `--model deepseek-reasoner`
   * R1-Llama-8B: `--model DeepSeek-R1-Distill-Llama-8B`
   * R1-Llama-70B: `--model DeepSeek-R1-Distill-Llama-70B`
   * R1-Qwen-1.5B: `--model DeepSeek-R1-Distill-Qwen-1.5B`
