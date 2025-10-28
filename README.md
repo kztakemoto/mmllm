@@ -21,14 +21,14 @@ pip install -r requirements.txt
 
 ## Usage
 ### Run the Moral Machine experiments on LLMs
-For GPT-3.5 (gpt-3.5-turbo-0613; no longer be available on September 13, 2024)
+For GPT-3.5 (gpt-3.5-turbo-0613; deprecated on September 13, 2024)
 ```
 python run.py --model gpt-3.5-turbo-0613 --nb_scenarios 50000
 ```
 To specify the model, use the following arguments:
 * OpenAI
   * GPT-3.5:
-    * `--model gpt-3.5-turbo-0301` (March 2023 version; no longer be available on September 13, 2024)
+    * `--model gpt-3.5-turbo-0301` (March 2023 version; retired September 13, 2024)
     * `--model gpt-3.5-turbo-1106` (November 2023 version)
     * `--model gpt-3.5-turbo-0125` (January 2024 version)
   * GPT-4:
@@ -85,8 +85,8 @@ To specify the model, use the following arguments:
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
   * 3 Opus: `--model claude-3-opus-20240229`
-  * 3.5 Sonnet (June 2024 version): `--model claude-3-5-sonnet-20240620`
-  * 3.5 Sonnet (October 2024 version): `--model claude-3-5-sonnet-20241022`
+  * 3.5 Sonnet (June 2024 version): `--model claude-3-5-sonnet-20240620` (deprecated on October 28, 2025)
+  * 3.5 Sonnet (October 2024 version): `--model claude-3-5-sonnet-20241022` (deprecated on October 28, 2025)
   * 3.5 Haiku: `--model claude-3-5-haiku-20241022`
   * 3.7 Sonnet: `--model claude-3-7-sonnet-20250219` (both with and without thinking mode)
   * Sonnet 4: `--model claude-sonnet-4-20250514` (both with and without thinking mode)
