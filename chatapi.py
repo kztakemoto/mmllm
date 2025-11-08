@@ -30,6 +30,8 @@ class ChatBotManager:
             self.chat_model = openai.OpenAI(api_key="ENTER YOUR DEEPSEEK API KEY", base_url="https://api.deepseek.com")
         elif "grok" in self.model.lower():
             self.chat_model = "grok"
+        elif "kimi" in self.model.lower():
+            self.chat_model = openai.OpenAI(api_key="ENTER YOUR MOONSHOT API KEY", base_url="https://api.moonshot.ai/v1")
 
     def chat(self, system_prompt, user_prompt):
         if any(s.lower() in self.model.lower() for s in ["gpt", "o3", "o4"]):
@@ -46,6 +48,8 @@ class ChatBotManager:
             return self.chat_gpt(system_prompt, user_prompt)
         elif "grok" in self.model.lower():
             return self.chat_xai(system_prompt, user_prompt)
+        elif "kimi" in self.model.lower():
+            return self.chat_gpt(system_prompt, user_prompt)
 
     def chat_gpt(self, system_prompt, user_prompt):
         attempt = 0
@@ -58,9 +62,9 @@ class ChatBotManager:
                             {"role": "user", "content": user_prompt}
                         ],
                 )
-                if "deepseek-reasoner" in self.model.lower():
+                if any(s.lower() in self.model.lower() for s in ["deepseek-reasoner", "kimi-k2-thinking"]):
                     response_text = "<think>" + response.choices[0].message.reasoning_content + "</think>" + response.choices[0].message.content
-                    time.sleep(35)
+                    # time.sleep(35)
                 else:
                     response_text = response.choices[0].message.content
                 
