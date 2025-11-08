@@ -164,6 +164,9 @@ To specify the model, use the following arguments:
   * 3-mini: `--model grok-3-mini-beta`
   * 3-mini-fast: `--model grok-3-mini-fast-beta`
   * 4: ``--model grok-4-0709``
+* Kimi
+  * K2: ``--model kimi-k2-0905-preview``
+  * K2 Thinking: ``--model kimi-k2-thinking-turbo``
 
 NOTE: For Llama 2, run as follows:
 ```
