@@ -161,10 +161,12 @@ To specify the model, use the following arguments:
 * Grok
   * 2: `--model grok-2-1212`
   * 3: `--model grok-3-beta`
-  * 3-fast: `--model grok-3-fast-beta`
-  * 3-mini: `--model grok-3-mini-beta`
-  * 3-mini-fast: `--model grok-3-mini-fast-beta`
+  * 3 fast: `--model grok-3-fast-beta`
+  * 3 mini: `--model grok-3-mini-beta`
+  * 3 mini fast: `--model grok-3-mini-fast-beta`
   * 4: ``--model grok-4-0709``
+  * 4 fast: ``--model grok-4-fast-non-reasoning``
+  * 4 fast thinking: ``--model grok-4-fast-reasoning``
 * Kimi
   * K2: ``--model kimi-k2-0905-preview``
   * K2 Thinking: ``--model kimi-k2-thinking-turbo``
