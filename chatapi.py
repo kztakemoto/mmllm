@@ -19,7 +19,8 @@ class ChatBotManager:
         self.max_attempts = max_attempts
                 
         if "gemini" in self.model.lower():
-            self.chat_model = GenerativeModel(self.model)
+            genai.configure(api_key="ENTER YOUR API KEY")
+            self.chat_model = genai.GenerativeModel(model_name = self.model)
         elif "palm" in self.model.lower():
             self.chat_model = ChatModel.from_pretrained("chat-bison@001")
         elif any(s.lower() in self.model.lower() for s in ["gpt", "o1", "o3", "o4"]):
@@ -39,7 +40,7 @@ class ChatBotManager:
         elif "o1" in self.model.lower():
             return self.chat_o1(system_prompt, user_prompt)
         elif "gemini" in self.model.lower():
-            return self.chat_gemini(system_prompt, user_prompt)
+            return self.chat_gemini2(system_prompt, user_prompt)
         elif "palm" in self.model.lower():
             return self.chat_palm(system_prompt, user_prompt)
         elif "claude" in self.model.lower():
@@ -244,6 +245,24 @@ class ChatBotManager:
                 print(str(e))
                 attempt = attempt + 1
             
+            except Exception as e:
+                print(str(e))
+                time.sleep(5)
+                attempt = attempt + 1
+        
+        return None
+        
+    def chat_gemini2(self, system_prompt, user_prompt):
+        attempt = 0
+        while attempt < self.max_attempts:
+            try:
+                prompt = f"{system_prompt}\n\n" + user_prompt 
+                response = self.chat_model.generate_content(
+                    prompt,
+                )
+
+                return response.text
+
             except Exception as e:
                 print(str(e))
                 time.sleep(5)
