@@ -57,6 +57,7 @@ To specify the model, use the following arguments:
   * GPT-5-mini: `--model gpt-5-mini-2025-08-07`
   * GPT-5-nano: `--model gpt-5-nano-2025-08-07`
   * GPT-5.1: `--model gpt-5.1-2025-11-13`
+  * GPT-5.2: `--model gpt-5.2-2025-12-11`
 * PaLM 2: `--model palm2`
 * Gemini
   * 1.0 Pro (deprecated on Febrary 18, 2025): `--model gemini-1.0-pro-001`
