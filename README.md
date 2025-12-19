@@ -84,6 +84,7 @@ To specify the model, use the following arguments:
     * `--model gemini-2.5-flash-preview-09-2025` (September 2025 version)
   * 2.5 Flash Lite: `--model gemini-2.5-flash-lite-preview-09-2025`
   * 3 Pro: `--model gemini-3-pro-preview`
+  * 3 Flash: `--model gemini-3-flash-preview`
 * Claude
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
