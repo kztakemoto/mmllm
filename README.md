@@ -172,6 +172,8 @@ To specify the model, use the following arguments:
   * 4: ``--model grok-4-0709``
   * 4 fast: ``--model grok-4-fast-non-reasoning``
   * 4 fast thinking: ``--model grok-4-fast-reasoning``
+  * 4.1 fast: ``--model grok-4-1-fast-non-reasoning``
+  * 4.1 fast thinking: ``--model grok-4-1-fast-reasoning``
 * Kimi
   * K2: ``--model kimi-k2-0905-preview``
   * K2 Thinking: ``--model kimi-k2-thinking-turbo``
