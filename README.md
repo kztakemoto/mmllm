@@ -8,6 +8,7 @@ This project is MIT licensed. If you use this code in your research, please cite
 
 + Takemoto K (2024) **The Moral Machine Experiment on Large Language Models.** R. Soc. Open Sci. 11, 231393. https://doi.org/10.1098/rsos.231393
 + Ahmad MSZ and Takemoto K (2025) **Large-Scale Moral Machine Experiment on Large Language Models.** PLoS One, 20, e0322776. https://doi.org/10.1371/journal.pone.0322776
++ Takemoto K (2026) **Scaling Laws for Moral Machine Judgment in Large Language Models.** arXiv:2601.17637. https://doi.org/10.48550/arXiv.2601.17637
 
 ## Requirements
 * Python 3.11 and PyTorch (v2.3.1; for the open-source LLMs such as Llama)
