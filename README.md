@@ -59,6 +59,7 @@ To specify the model, use the following arguments:
   * GPT-5-nano: `--model gpt-5-nano-2025-08-07`
   * GPT-5.1: `--model gpt-5.1-2025-11-13`
   * GPT-5.2: `--model gpt-5.2-2025-12-11`
+  * GPT-5.4: `--model gpt-5.4-2026-03-05`
 * PaLM 2: `--model palm2`
 * Gemini
   * 1.0 Pro (deprecated on Febrary 18, 2025): `--model gemini-1.0-pro-001`
@@ -86,6 +87,8 @@ To specify the model, use the following arguments:
   * 2.5 Flash Lite: `--model gemini-2.5-flash-lite-preview-09-2025`
   * 3 Pro: `--model gemini-3-pro-preview`
   * 3 Flash: `--model gemini-3-flash-preview`
+  * 3.1 Pro: `--model gemini-3.1-pro-preview`
+  * 3.1 Flash Lite: `--model gemini-3.1-flash-lite-preview`
 * Claude
   * 3 Haiku: `--model claude-3-haiku-20240307`
   * 3 Sonnet: `--model claude-3-sonnet-20240229`
@@ -100,6 +103,8 @@ To specify the model, use the following arguments:
   * Sonnet 4.5: `--model claude-sonnet-4-5-20250929` (both with and without thinking mode)
   * Haiku 4.5: `--model claude-haiku-4-5-20251001` (both with and without thinking mode)
   * Opus 4.5: `--model claude-opus-4-5-20251101` (both with and without thinking mode)
+  * Sonnet 4.5: `--model claude-sonnet-4-6` (both with and without thinking mode)
+  * Opus 4.6: `--model claude-opus-4-6` (both with and without thinking mode)
 * Llama
   * 2 7B Chat: `--model llama-2-7b-chat`
   * 3 8B Instruct: `--model Meta-Llama-3-8B-Instruct`
@@ -148,6 +153,12 @@ To specify the model, use the following arguments:
   * 3 8B: `--model Qwen3-8B` (both with and without thinking mode)
   * 3 14B: `--model Qwen3-14B` (both with and without thinking mode)
   * 3 32B: `--model Qwen3-32B` (both with and without thinking mode)
+  * 3.5 0.8B: `--model Qwen3.5-0.8B`
+  * 3.5 2B: `--model Qwen3.5-2B`
+  * 3.5 4B: `--model Qwen3.5-4B`
+  * 3.5 9B: `--model Qwen3.5-9B`
+  * 3.5 27B: `--model Qwen3.5-27B`
+  * 3.5 35B A3B: `--model Qwen3.5-35B-A3B`
 * QwQ 32B: `--model QwQ-32B`
 * Deepseek
   * V3: `--model deepseek-chat` (December 2024 and March 2025 versions)
