@@ -103,7 +103,7 @@ To specify the model, use the following arguments:
   * Sonnet 4.5: `--model claude-sonnet-4-5-20250929` (both with and without thinking mode)
   * Haiku 4.5: `--model claude-haiku-4-5-20251001` (both with and without thinking mode)
   * Opus 4.5: `--model claude-opus-4-5-20251101` (both with and without thinking mode)
-  * Sonnet 4.5: `--model claude-sonnet-4-6` (both with and without thinking mode)
+  * Sonnet 4.6: `--model claude-sonnet-4-6` (both with and without thinking mode)
   * Opus 4.6: `--model claude-opus-4-6` (both with and without thinking mode)
 * Llama
   * 2 7B Chat: `--model llama-2-7b-chat`
