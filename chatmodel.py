@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, Gemma3ForConditionalGeneration
+from transformers import AutoTokenizer, AutoModelForCausalLM, AutoProcessor, Gemma3ForConditionalGeneration
 
 class ChatModel:
     def __init__(self, model):
@@ -8,17 +8,22 @@ class ChatModel:
         if "deepseek" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "deepseek-ai/{}".format(self.model),
+                cache_dir="/mnt/data1/molmo_weight/",
             )
 
             self.generator = AutoModelForCausalLM.from_pretrained(
                 f"deepseek-ai/{self.model}",
                 torch_dtype=torch.bfloat16,
+                # load_in_4bit=True,
+                # bnb_4bit_compute_dtype=torch.bfloat16,
                 device_map="auto",
+                cache_dir="/mnt/data1/molmo_weight/",
             )
         
         elif "qwen" in self.model.lower() or "qwq" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "Qwen/{}".format(self.model),
+                cache_dir="/mnt/data1/molmo_weight/",
             )
 
             if "72b" in self.model.lower():
@@ -27,6 +32,7 @@ class ChatModel:
                         load_in_4bit=True,
                         bnb_4bit_compute_dtype=torch.bfloat16,
                         device_map="auto",
+                        cache_dir="/mnt/data1/molmo_weight",
                     )
 
             else:
@@ -34,12 +40,14 @@ class ChatModel:
                     f"Qwen/{self.model}",
                     torch_dtype=torch.bfloat16,
                     device_map="auto",
+                    cache_dir="/mnt/data1/molmo_weight/",
                 )
 
         elif "llama" in self.model.lower():
             if "llama-3" in self.model.lower():
                 self.tokenizer = AutoTokenizer.from_pretrained(
                     f"meta-llama/{self.model}",
+                    cache_dir="/mnt/data1/molmo_weight",
                 )
 
                 if self.tokenizer.pad_token is None:
@@ -51,6 +59,7 @@ class ChatModel:
                         load_in_4bit=True,
                         bnb_4bit_compute_dtype=torch.bfloat16,
                         device_map="auto",
+                        cache_dir="/mnt/data1/molmo_weight",
                     )
 
                 else:
@@ -58,15 +67,49 @@ class ChatModel:
                         f"meta-llama/{self.model}",
                         torch_dtype=torch.bfloat16,
                         device_map="auto",
+                        cache_dir="/mnt/data1/molmo_weight",
                     )
             else:
                 from llama import Llama
                 self.generator = Llama.build(
-                    ckpt_dir=f"./{self.model}/",
-                    tokenizer_path=f"./{self.model}/tokenizer.model",
+                    # ckpt_dir=f"../../llama3/{self.model}/",
+                    # tokenizer_path=f"../../llama3/{self.model}/tokenizer.model",
+                    ckpt_dir=f"../{self.model}/",
+                    tokenizer_path=f"../tokenizer.model",
                     max_seq_len=512,
                     max_batch_size=1,
                 )
+
+            # if self.model == "Meta-Llama-3-70B-Instruct":
+            #     self.tokenizer = AutoTokenizer.from_pretrained(
+            #         "meta-llama/Meta-Llama-3-70B-Instruct",
+            #     )
+
+            #     if self.tokenizer.pad_token is None:
+            #         self.tokenizer.pad_token = self.tokenizer.eos_token
+
+            #     self.generator = AutoModelForCausalLM.from_pretrained(
+            #         "meta-llama/Meta-Llama-3-70B-Instruct",
+            #         load_in_4bit=True,
+            #         bnb_4bit_compute_dtype=torch.bfloat16,
+            #         device_map="auto",
+            #     )
+            # else:
+            #     if "llama-2" in self.model.lower():
+            #         from llama import Llama
+            #     elif "llama-3-8b" in self.model.lower():
+            #         from llama3 import Llama
+            #     else:
+            #         raise ValueError("unsupprted llama model")
+
+            #     self.generator = Llama.build(
+            #         ckpt_dir=f"../../llama3/{self.model}/",
+            #         tokenizer_path=f"../../llama3/{self.model}/tokenizer.model",
+            #         #ckpt_dir=f"../{self.model}/",
+            #         #tokenizer_path=f"../tokenizer.model",
+            #         max_seq_len=512,
+            #         max_batch_size=1,
+            #     )
 
         elif "vicuna" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
@@ -79,24 +122,29 @@ class ChatModel:
                 device_map="auto",
             )
         elif "gemma" in self.model.lower():
-            self.tokenizer = AutoTokenizer.from_pretrained(
-                "google/{}".format(self.model),
-                use_fast=False,
-            )
-
-            if "gemma-3" in self.model.lower():
-                self.generator = Gemma3ForConditionalGeneration.from_pretrained(
-                    "google/{}".format(self.model),
-                    torch_dtype=torch.bfloat16,
-                    device_map="auto",
-                )
-            else:
+            if "gemma-4" in self.model.lower():
+                self.processor = AutoProcessor.from_pretrained("google/{}".format(self.model))
                 self.generator = AutoModelForCausalLM.from_pretrained(
                     "google/{}".format(self.model),
+                    dtype="auto",
+                    device_map="auto",
+                    cache_dir="/mnt/data1/molmo_weight/",
+                )
+            else:
+                self.tokenizer = AutoTokenizer.from_pretrained(
+                    "google/{}".format(self.model),
+                    use_fast=False,
+                    cache_dir="/mnt/data1/molmo_weight/",
+                )
+
+                self.generator = AutoModelForCausalLM.from_pretrained(
+                # self.generator = Gemma3ForConditionalGeneration.from_pretrained(
+                    "google/{}".format(self.model),
                     torch_dtype=torch.bfloat16,
                     device_map="auto",
+                    cache_dir="/mnt/data1/molmo_weight/",
                 )
-                
+
         elif "mistral" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "mistralai/{}".format(self.model),
@@ -115,15 +163,20 @@ class ChatModel:
         elif "command" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "CohereForAI/{}".format(self.model),
+                cache_dir="/mnt/data1/molmo_weight/",
             )
 
             self.generator = AutoModelForCausalLM.from_pretrained(
                 "CohereForAI/{}".format(self.model),
+                load_in_4bit=True,
+                #bnb_4bit_compute_dtype=torch.bfloat16,
                 device_map="auto",
+                cache_dir="/mnt/data1/molmo_weight/",
             )
         elif "phi-" in self.model.lower():
             self.tokenizer = AutoTokenizer.from_pretrained(
                 "microsoft/{}".format(self.model),
+                cache_dir="/mnt/data1/molmo_weight/",
             )
 
             if "moe" in self.model.lower():
@@ -134,6 +187,7 @@ class ChatModel:
                     trust_remote_code=True,
                     load_in_4bit=True,
                     bnb_4bit_compute_dtype=torch.bfloat16,
+                    cache_dir="/mnt/data1/molmo_weight/",
                 )
             else:
                 self.generator = AutoModelForCausalLM.from_pretrained(
@@ -141,7 +195,9 @@ class ChatModel:
                     device_map="auto", 
                     torch_dtype="auto", 
                     trust_remote_code=True,
+                    cache_dir="/mnt/data1/molmo_weight/",
                 )
+
         else:
             raise ValueError("unsupprted model")
 
@@ -200,7 +256,7 @@ class ChatModel:
         response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
 
         return str(response)
-
+    
     def chat_deepseek(self, system_prompt, user_prompt):
         prompt = f"<｜begin▁of▁sentence｜>Please respond to binary questions. {system_prompt}<｜User｜>{user_prompt}<｜Assistant｜>"
         
@@ -220,7 +276,7 @@ class ChatModel:
         response = self.tokenizer.decode(output_ids.tolist()[0][inputs.input_ids.size(1):])
 
         return str(response)
-
+    
     def chat_qwen(self, system_prompt, user_prompt):
         if "qwen3" in self.model.lower():
             messages = [
@@ -232,16 +288,17 @@ class ChatModel:
                 messages,
                 tokenize=False,
                 add_generation_prompt=True,
-                enable_thinking=False
-                # enable_thinking=True
+                # enable_thinking=False
+                enable_thinking=True
             )
+            print(text)
 
             model_inputs = self.tokenizer([text], return_tensors="pt").to(self.generator.device)
 
             # conduct text completion
             generated_ids = self.generator.generate(
                 **model_inputs,
-                max_new_tokens=32768
+                max_new_tokens=32768,
             )
             output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist()
             
@@ -249,6 +306,7 @@ class ChatModel:
             try:
                 # rindex finding 151668 (</think>)
                 index = len(output_ids) - output_ids[::-1].index(151668)
+                # index = len(output_ids) - output_ids[::-1].index(248068)
             except ValueError:
                 index = 0
 
@@ -258,9 +316,10 @@ class ChatModel:
             response = str(thinking_content) + str(content)
 
         else:
-            prompt = f"<|im_start|>system\nPlease respond to binary questions. {system_prompt}<|im_end|>\n\n<|im_start|>user\n{user_prompt}<|im_end|>\n\n<|im_start|>assistant"
+            prompt = f"<|im_start|>system\nPlease respond to binary questions. {system_prompt}<|im_end|>\n<|im_start|>user\n{user_prompt}<|im_end|>\n<|im_start|>assistant\n"
             
             inputs = self.tokenizer(prompt, return_tensors="pt").to(self.generator.device)
+
             with torch.no_grad():
                 output_ids = self.generator.generate(
                     input_ids=inputs.input_ids,
@@ -273,6 +332,7 @@ class ChatModel:
                     bos_token_id=self.tokenizer.bos_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
                 )
+
             response = self.tokenizer.decode(output_ids.tolist()[0][inputs.input_ids.size(1):])
 
         return str(response)
@@ -297,23 +357,50 @@ class ChatModel:
         return str(response)
 
     def chat_gemma(self, system_prompt, user_prompt):
-        prompt = f"<bos><start_of_turn>user\nPlease respond to binary questions.\n\n{system_prompt}\n\n{user_prompt}<end_of_turn>\n<start_of_turn>model\n"
-        
-        token_ids = self.tokenizer.encode(prompt, add_special_tokens=False, return_tensors="pt")
-        with torch.no_grad():
-            output_ids = self.generator.generate(
-                token_ids.to(self.generator.device),
-                max_new_tokens=512,
-                do_sample=True,
-                temperature=0.7,
-                top_p=1.0,
-                pad_token_id=self.tokenizer.pad_token_id,
-                bos_token_id=self.tokenizer.bos_token_id,
-                eos_token_id=self.tokenizer.convert_tokens_to_ids("<end_of_turn>"),
-            )
-        response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
+        if "gemma-4" in self.model.lower():
+            messages = [
+                {"role": "system", "content": f"Please respond to binary questions.\n\n{system_prompt}"},
+                {"role": "user", "content": user_prompt},
+            ]
 
-        return str(response)
+            text = self.processor.apply_chat_template(
+                messages, 
+                tokenize=False, 
+                add_generation_prompt=True, 
+                enable_thinking=False
+            )
+            inputs = self.processor(text=text, return_tensors="pt").to(self.generator.device)
+            input_len = inputs["input_ids"].shape[-1]
+
+            # Generate output
+            outputs = self.generator.generate(**inputs, max_new_tokens=1024)
+            response = self.processor.decode(outputs[0][input_len:], skip_special_tokens=False)
+
+            response = self.processor.parse_response(response)
+            # for thinking mode
+            # response = f"<think>{response['thinking']}</think>{response['content']}"
+            
+            return str(response)
+
+        else:
+            prompt = f"<bos><start_of_turn>user\nPlease respond to binary questions.\n\n{system_prompt}\n\n{user_prompt}<end_of_turn>\n<start_of_turn>model\n"
+
+            token_ids = self.tokenizer.encode(prompt, add_special_tokens=False, return_tensors="pt")
+            with torch.no_grad():
+                output_ids = self.generator.generate(
+                    token_ids.to(self.generator.device),
+                    max_new_tokens=512,
+                    do_sample=True,
+                    temperature=0.7,
+                    top_p=1.0,
+                    pad_token_id=self.tokenizer.pad_token_id,
+                    bos_token_id=self.tokenizer.bos_token_id,
+                    #eos_token_id=self.tokenizer.eos_token_id,
+                    eos_token_id=self.tokenizer.convert_tokens_to_ids("<end_of_turn>"),
+                )
+            response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
+
+            return str(response)
 
     def chat_mistral(self, system_prompt, user_prompt):
         prompt = f"<s>[INST] Please respond to binary questions.\n\n{system_prompt}\n\n{user_prompt} [/INST]"
@@ -352,7 +439,7 @@ class ChatModel:
         response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
 
         return str(response)
-        
+
     def chat_phi(self, system_prompt, user_prompt):
         prompt = f"<|system|>\n{system_prompt}<|end|>\n<|user|>\n{user_prompt}<|end|>\n<|assistant|>"
 
@@ -360,12 +447,13 @@ class ChatModel:
         with torch.no_grad():
             output_ids = self.generator.generate(
                 token_ids.to(self.generator.device),
-                max_new_tokens=100,
+                max_new_tokens=512,
                 do_sample=True,
                 temperature=0.7,
                 top_p=1.0,
                 pad_token_id=self.tokenizer.pad_token_id,
                 bos_token_id=self.tokenizer.bos_token_id,
+                #eos_token_id=self.tokenizer.eos_token_id,
                 eos_token_id=self.tokenizer.convert_tokens_to_ids("<|end|>"),
             )
         response = self.tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
