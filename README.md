@@ -133,6 +133,10 @@ To specify the model, use the following arguments:
   * 3-12B-it: `--model gemma-3-12b-it`
   * 3-27B-it: `--model gemma-3-27b-it`
   * 3-270M-it: `--model gemma-3-270m-it`
+  * 4-E2B-it: `--model gemma-4-E2B-it`
+  * 4-E4B-it: `--model gemma-4-E4B-it`
+  * 4-26B-A4B-it: `--model 4-26B-A4B-it`
+  * 4-31B-it: `--model gemma-4-31B-it`
 * Command R+: `--model c4ai-command-r-plus-4bit`
 * Phi
   *  3.5 MoE-instruct: `--model Phi-3.5-MoE-instruct`
