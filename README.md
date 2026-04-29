@@ -172,6 +172,8 @@ To specify the model, use the following arguments:
   * V3.2: `--model deepseek-chat`
   * V3.2 with thinking: `--model deepseek-reasoner`
   * V3.2 Speciale: `--model deepseek-reasoner`
+  * V4 Pro: `--model deepseek-v4-pro` (both with and without thinking mode)
+  * V4 Flash: `--model deepseek-v4-flash` (both with and without thinking mode)
   * R1-Llama-8B: `--model DeepSeek-R1-Distill-Llama-8B`
   * R1-Llama-70B: `--model DeepSeek-R1-Distill-Llama-70B`
   * R1-Qwen-1.5B: `--model DeepSeek-R1-Distill-Qwen-1.5B`
@@ -185,14 +187,16 @@ To specify the model, use the following arguments:
   * 3 fast: `--model grok-3-fast-beta`
   * 3 mini: `--model grok-3-mini-beta`
   * 3 mini fast: `--model grok-3-mini-fast-beta`
-  * 4: ``--model grok-4-0709``
-  * 4 fast: ``--model grok-4-fast-non-reasoning``
-  * 4 fast thinking: ``--model grok-4-fast-reasoning``
-  * 4.1 fast: ``--model grok-4-1-fast-non-reasoning``
-  * 4.1 fast thinking: ``--model grok-4-1-fast-reasoning``
+  * 4: `--model grok-4-0709`
+  * 4 fast: `--model grok-4-fast-non-reasoning`
+  * 4 fast thinking: `--model grok-4-fast-reasoning`
+  * 4.1 fast: `--model grok-4-1-fast-non-reasoning`
+  * 4.1 fast thinking: `--model grok-4-1-fast-reasoning`
+  * 4.2: `--model grok-4.20-0309-non-reasoning`
+  * 4.2 thinking: `--model grok-4.20-0309-reasoning`
 * Kimi
-  * K2: ``--model kimi-k2-0905-preview``
-  * K2 Thinking: ``--model kimi-k2-thinking-turbo``
+  * K2: `--model kimi-k2-0905-preview`
+  * K2 Thinking: `--model kimi-k2-thinking-turbo`
 
 NOTE: For Llama 2, run as follows:
 ```
